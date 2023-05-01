@@ -25,13 +25,13 @@ export default {
 //margin-top: 200px;
 }
 img{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%, -50%);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-15%, 0%);
 }
 .custom-btn {
-  width: 130px;
+  width: 150px;
   height: 40px;
   color: #fff;
   border-radius: 5px;
@@ -50,14 +50,17 @@ img{
 }
 /*MakeButton*/
 .ScnMakeButton {
-  background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
-  line-height: 42px;
-  padding: 0;
-  border: none;
-  top: 150px;
-  left: 475px;
-  margin-right: 3px;
-  position: absolute;
+    background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
+    line-height: 42px;
+    padding: 0;
+    border: none;
+//top: 150px;
+//left: 475px;
+    margin-right: 3px;
+    top:50%;
+    left:50%;
+    transform: translate(-100%, 600%);
+    position: absolute;
 }
 .ScnMakeButton span {
   position: relative;
@@ -129,17 +132,18 @@ img{
 
 /*Select Button*/
 .ScnSelectButton {
-  background: rgb(0,172,238);
-  background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
-  width: 130px;
-  height: 40px;
-  line-height: 42px;
-  padding: 0;
-  border: none;
-  top: 150px;
-  left: 700px;
-  margin-right: 3px;
-  position: absolute;
+    background: rgb(0,172,238);
+    background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
+    width: 150px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    top:50%;
+    left:50%;
+    transform: translate(100%, 600%);
+    margin-right: 3px;
+    position: absolute;
 
 }
 .ScnSelectButton span {
