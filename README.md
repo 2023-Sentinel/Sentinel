@@ -13,7 +13,7 @@ Dashboard for Incident Response
 6. <strong>(완료)</strong> Header의 각 Sector 클릭시 해당 Sector로 이동
 7. <strong>(완료)</strong> Home에서 "시나리오 생성/삭제" , "시나리오 선택" 버튼 클릭시 해당 Sector 이동
 8. <strong>(완료)</strong> 로그인 기능 구현
-9. <strong>(완료)</strong> 로그인 성공시 성공 Alert, Home화면 이동
+9. <strong>(완료)</strong> 로그인 성공시 성공,실패시 Alert 알림, 성공시 Home화면 이동
 9. 로그인 성공시 Login 버튼 Logout으로 변경
 9. 시나리오 생성/삭제 화면
 10. 시나리오 선택화면
