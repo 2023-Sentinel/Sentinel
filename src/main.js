@@ -4,11 +4,12 @@ import router from "@/scripts/router"
 import App from './App.vue'
 import axios from 'axios'
 
-import '@/assets/SelectStyle.css'
+import { BaklavaVuePlugin } from "@baklavajs/plugin-renderer-vue3";
+import "@baklavajs/plugin-renderer-vue3/dist/styles.css";
 
 const app=createApp(App)
+
 app.config.globalProperties.$axios = axios;
 app.config.globalProperties.$serverUrl = '//localhost:8081'
-app.use(router).use(store).mount('#app')
-
+app.use(router).use(store).use(BaklavaVuePlugin).mount('#app')
 //createApp(App).use(store).use(router).mount('#app')

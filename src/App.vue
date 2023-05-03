@@ -1,6 +1,8 @@
 <template>
   <Header/>
   <RouterView/>
+    <Home.vue/>
+    <ScnMakePage.vue/>
     <ScnSelectPage/>
 <!--  <Footer/>-->
 </template>
