@@ -1,14 +1,11 @@
-//Attacker Node
 import { NodeBuilder } from '@baklavajs/core'
 
-export const AtkNode = new NodeBuilder('AtkNode')
+export const PPLNode = new NodeBuilder('PPLNode')
     //노드 이름 설정
-    .setName('Attacker')
+    .setName('Person')
     //노트 인풋 연결 Interface
     .addInputInterface('InputNode')
-    .addOption('Attacker Name', 'InputOption')
+    .addOption('Person Spec', 'InputOption')
     .addOption('Date', 'InputOption')
     .addOutputInterface('OutputNode')
     .build()
-
-

@@ -1,6 +1,8 @@
 <template>
-    <button class="custom-btn Aplbutton" type="button" @click="$router.push('/Dashboard')"><span>Apply</span>
+    <button class="custom-btn Aplbutton" type="button" @click="srnSave()"><span>Apply</span>
     </button>
+    <button class="Loadbutton" type="button" @click="srnLoad()"><span>Load</span></button>
+
     <div style="height: 80vh; width: 80vw">
         <baklava-editor :plugin="viewPlugin" />
     </div>
@@ -22,6 +24,16 @@ import {AccountNode} from '@/assets/AcntNode'
 
 
 export default {
+    methods: {
+        srnSave: function() {
+            const IState=this.editor.save()
+            console.log(IState)
+        },
+        srnLoad: function() {
+            let IState2=this.editor.save()
+            console.log(this.editor.load(IState2))
+        }
+    },
     data() {
         return {
             editor: new Editor(),
@@ -142,4 +154,6 @@ export default {
 .Aplbutton span:hover:after {
     width: 100%;
 }
+
+
 </style>
