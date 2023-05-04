@@ -4,6 +4,7 @@
     <Home.vue/>
     <ScnMakePage.vue/>
     <ScnSelectPage/>
+  <Baklava></Baklava>
 <!--  <Footer/>-->
 </template>
 
