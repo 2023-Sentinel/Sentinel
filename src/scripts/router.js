@@ -4,6 +4,7 @@ import ScnMakePage from "@/components/ScnMakePage.vue";
 import ScnSelectPage from "@/components/ScnSelectPage.vue";
 import DashboardPage from "@/components/Dashboard.vue";
 import ErrorPage from "@/pages/ErrorPage.vue"
+import BoardPage from "@/components/BoardPage.vue";
 
 import {createRouter, createWebHashHistory} from "vue-router";
 
@@ -29,6 +30,11 @@ const routes = [
         path : "/:pathMatch(.*)",
         name : "not-found",
         component : ErrorPage
+    },
+    {
+        path : "/Board",
+        name : "Board",
+        component: BoardPage
     }
 
 

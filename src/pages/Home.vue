@@ -1,3 +1,82 @@
+<!--<template>-->
+<!--  <nav class="navbar navbar-light bg-light fixed-top">-->
+<!--    <div class="container-fluid">-->
+<!--      <a class="navbar-brand" href="#">Therichpost</a>-->
+<!--      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--      </button>-->
+<!--      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">-->
+<!--        <div class="offcanvas-header">-->
+<!--          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>-->
+<!--          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>-->
+<!--        </div>-->
+<!--        <iframe src="https://okky.kr/articles/510468" width="100%" height="1000">-->
+<!--        </iframe>-->
+<!--&lt;!&ndash;        <div class="offcanvas-body">&ndash;&gt;-->
+<!--&lt;!&ndash;          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">&ndash;&gt;-->
+<!--&lt;!&ndash;            <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="nav-link active" aria-current="page" href="#">Home</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="nav-link" href="#">Link</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li class="nav-item dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">&ndash;&gt;-->
+<!--&lt;!&ndash;                Dropdown&ndash;&gt;-->
+<!--&lt;!&ndash;              </a>&ndash;&gt;-->
+<!--&lt;!&ndash;              <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                <li><a class="dropdown-item" href="#">Action</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li><a class="dropdown-item" href="#">Another action</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <hr class="dropdown-divider">&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li><a class="dropdown-item" href="#">Something else here</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;              </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;            </li>&ndash;&gt;-->
+<!--&lt;!&ndash;          </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;          <form class="d-flex">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">&ndash;&gt;-->
+<!--&lt;!&ndash;            <button class="btn btn-outline-success" type="submit">Search</button>&ndash;&gt;-->
+<!--&lt;!&ndash;          </form>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </nav>-->
+<!--&lt;!&ndash;  <div class="container p-5 mt-5">&ndash;&gt;-->
+<!--&lt;!&ndash;    <h1>Vuejs - Vue 3 Bootstrap 5.1.0 Offcanvas Sidebar</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>&ndash;&gt;-->
+<!--&lt;!&ndash;    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="line"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <h2>Lorem Ipsum Dolor</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="line"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <h2>Lorem Ipsum Dolor</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="line"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <h3>Lorem Ipsum Dolor</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--</template>-->
+<!--<script>-->
+<!--//importing bootstrap 5-->
+<!--import "bootstrap/dist/css/bootstrap.min.css";-->
+<!--import "bootstrap/dist/js/bootstrap.min.js";-->
+<!--export default {-->
+
+<!--}-->
+<!--</script>-->
+<!--<style>-->
+<!--.line {-->
+<!--  width: 100%;-->
+<!--  height: 1px;-->
+<!--  border-bottom: 1px dashed #ddd;-->
+<!--  margin: 40px 0;-->
+<!--}-->
+<!--</style>-->
+
+
+
 <template>
   <div id="HomePage">
     <img id="stnlogo" src="@/assets/logo_icon.png" width="200" height="200"/>

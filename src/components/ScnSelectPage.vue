@@ -3,6 +3,9 @@
         <div class="common-buttons">
             <button type="button" class="w3-button w3-round w3-blue-gray" v-on:click="fnWrite">등록</button>
         </div>
+        <div>
+          <SideBar></SideBar>
+        </div>
         <table class="w3-table-all">
             <thead>
             <tr>
@@ -42,7 +45,10 @@
 </template>
 
 <script>
+import SideBar from "@/components/SideBar.vue"
+
 export default {
+  components: {SideBar},
     data() { //변수생성
         return {
             requestBody: {}, //리스트 페이지 데이터전송
