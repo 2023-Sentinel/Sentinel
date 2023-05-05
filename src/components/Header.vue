@@ -20,11 +20,12 @@
     <!--   버튼 3개 묶음  -->
       <div class="col-md-2 text-end">
         <router-link to="/login" class="text-white" v-if="!$store.state.account.id">
-          <button type="button" class="btn btn-outline-primary me-2">
-            Login
-          </button>
+          <button type="button" class="btn btn-outline-primary me-2">Login</button>
+          <button type="button" class="btn btn-primary me-2">Sign-up</button>
         </router-link>
-        <button type="button" class="btn btn-primary me-2">Sign-up</button>
+        <router-link to="/login" class="text-white" v-else>
+          <button type="button" class="btn btn-outline-primary me-2">Logout</button>
+        </router-link>
       </div>
     </header>
   </div>
