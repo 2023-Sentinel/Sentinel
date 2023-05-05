@@ -3,7 +3,7 @@
   <RouterView/>
     <Home.vue/>
     <ScnMakePage.vue/>
-    <ScnSelectPage/>
+    <ScnSelectPage.vue/>
 <!--  <Footer/>-->
 </template>
 
