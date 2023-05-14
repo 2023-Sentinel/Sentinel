@@ -10,6 +10,7 @@
   "dependencies": {
     "@baklavajs/core": "^1.10.2",
     "@baklavajs/plugin-engine": "^1.10.2",
+    "@baklavajs/plugin-interface-types": "^1.10.2",
     "@baklavajs/plugin-options-vue": "^1.10.2",
     "@baklavajs/plugin-options-vue3": "^1.9.3",
     "@baklavajs/plugin-renderer-vue": "^1.10.2",
@@ -23,8 +24,11 @@
     "dayjs": "1.8.36",
     "jquery": "^3.6.4",
     "material-design-icons-iconfont": "6.1.0",
+    "node-sass": "^8.0.0",
     "roboto-fontface": "0.10.0",
+    "sass-loader": "^13.2.2",
     "vue": "^3.2.13",
+    "vue-facing-decorator": "^2.1.20",
     "vue-router": "^4.1.6",
     "vuex": "^4.0.2"
   },

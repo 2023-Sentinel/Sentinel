@@ -1,9 +1,10 @@
 <template>
     <button class="custom-btn Aplbutton" type="button" @click="srnSave()"><span>Save</span>
     </button>
-    <button class="custom-btn Ldbutton" type="button" @click="srnLoad()"><span>Load</span></button>
-
-    <div style="height: 80vh; width: 80vw">
+    <input class="dark-input" type="text" value="scnNameText" placeholder="시나리오 제목"/>
+    <p>  </p>
+    <p>  </p>
+    <div style="margin: 0 auto; height: 80vh; width: 80vw">
         <baklava-editor :plugin="viewPlugin" />
     </div>
 
@@ -11,8 +12,10 @@
 
 <script>
 import { Editor } from '@baklavajs/core'
+import { Engine } from '@baklavajs/plugin-engine'
 import { ViewPlugin } from '@baklavajs/plugin-renderer-vue3'
 import { OptionPlugin } from '@baklavajs/plugin-options-vue3'
+import {InterfaceTypePlugin} from '@baklavajs/plugin-interface-types'
 
 import {AtkNode} from '@/assets/AtkNode'
 import {RouterNode} from '@/assets/RouterNode'
@@ -21,8 +24,13 @@ import {PCNode} from '@/assets/PCNode'
 import {SVNode} from '@/assets/ServerNode'
 import {FLNode} from '@/assets/FileNode'
 import {AccountNode} from '@/assets/AcntNode'
-import router from "@/scripts/router";
+// import {MemoNode} from '@/assets/MemoNode'
+import router from "@/scripts/router"
 
+//function import
+import CustomSidebarOption from "@/assets/CustomSidebarOption"
+import TriggerOption from "@/assets/TriggerOption"
+import TextareaOption from "@/assets/TextareaOption"
 
 export default {
     methods: {
@@ -41,21 +49,40 @@ export default {
     data() {
         return {
             editor: new Editor(),
-            viewPlugin: new ViewPlugin()
+            viewPlugin: new ViewPlugin(),
+            engine: new Engine(true),
+            nodeInterfaceTypes: new InterfaceTypePlugin()
         }
     },
     created() {
         this.editor.use(this.viewPlugin)
         this.viewPlugin.enableMinimap = true
         this.editor.use(new OptionPlugin())
+        this.editor.use(this.nodeInterfaceTypes)
+        this.viewPlugin.registerOption("TextareaOption", TextareaOption)
+        this.viewPlugin.registerOption("CustomSidebarOption", CustomSidebarOption)
+        this.viewPlugin.registerOption("TriggerOption", TriggerOption)
 
-        this.editor.registerNodeType('Attacker', AtkNode)
-        this.editor.registerNodeType('Router', RouterNode)
-        this.editor.registerNodeType('PC', PCNode)
-        this.editor.registerNodeType('Person', PPLNode)
-        this.editor.registerNodeType('Server', SVNode)
-        this.editor.registerNodeType('File', FLNode)
-        this.editor.registerNodeType('Account', AccountNode)
+
+        this.nodeInterfaceTypes.addType("MemoDot", "#BE3455");
+
+
+        const token = 1;
+        this.editor.events.beforeAddNode.addListener(token, (obj)=> {
+            console.log(obj);
+            return true;
+        })
+
+        this.engine.calculate();
+    },
+    mounted(){
+        this.editor.registerNodeType('AtkNode', AtkNode)
+        this.editor.registerNodeType('RouterNode', RouterNode)
+        this.editor.registerNodeType('PCNode', PCNode)
+        this.editor.registerNodeType('PPLNode', PPLNode)
+        this.editor.registerNodeType('SVNode', SVNode)
+        this.editor.registerNodeType('FileNode', FLNode)
+        this.editor.registerNodeType('AccountNode', AccountNode)
 
     }
 
