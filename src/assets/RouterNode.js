@@ -12,5 +12,6 @@ export const RouterNode = new NodeBuilder('RouterNode',{
 
     .addOption('IPAddress', 'InputOption')
     .addOption('Date', 'InputOption')
+    .addInputInterface('MemoInput', "StringOption", "memo", {type:"MemoDot"})
 
     .build()

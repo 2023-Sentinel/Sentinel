@@ -11,5 +11,6 @@ export const PPLNode = new NodeBuilder('PPLNode',{
     .addOutputInterface('OutputNode')
     .addOption('Person Spec', 'InputOption')
     .addOption('Date', 'InputOption')
+    .addInputInterface('MemoInput', "StringOption", "memo", {type:"MemoDot"})
 
     .build()

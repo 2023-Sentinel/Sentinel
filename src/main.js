@@ -5,7 +5,8 @@ import App from './App.vue'
 import axios from 'axios'
 
 import { BaklavaVuePlugin } from "@baklavajs/plugin-renderer-vue3";
-import "@baklavajs/plugin-renderer-vue3/dist/styles.css";
+// import "@baklavajs/plugin-renderer-vue3/dist/styles.css";
+import "/src/assets/nstyle.scss";
 
 const app=createApp(App)
 

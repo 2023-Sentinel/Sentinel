@@ -11,5 +11,6 @@ export const SVNode = new NodeBuilder('SVNode',{
     .addOutputInterface('OutputNode')
     .addOption('IPAddress', 'InputOption')
     .addOption('Date', 'InputOption')
+    .addInputInterface('MemoInput', "StringOption", "memo", {type:"MemoDot"})
 
     .build()

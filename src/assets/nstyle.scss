@@ -1,0 +1,12 @@
+@import "@baklavajs/plugin-renderer-vue3/dist/styles/variables.scss";
+
+
+@import "@baklavajs/plugin-renderer-vue3/dist/styles/styles.scss";
+
+
+.node{
+  &.--type-MemoNode{
+    background-color: rgba(230,200,0,0.8);
+  }
+  filter: none !important;
+}

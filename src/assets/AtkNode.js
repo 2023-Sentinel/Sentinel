@@ -12,6 +12,8 @@ export const AtkNode = new NodeBuilder('AtkNode',{
     .addOutputInterface('OutputNode')
     .addOption('Attacker Name', 'InputOption')
     .addOption('Date', 'InputOption')
+    .addInputInterface('MemoInput', "StringOption", "memo", {type:"MemoDot"})
+
 
     .build()
 

@@ -26,11 +26,13 @@ export default {
 //margin-top: 200px;
 }
 img{
-    position:relative;
-    /*
+    position:absolute;
+
     top:50%;
     left:50%;
-    transform: translate(-15%, 0%);*/
+    margin-top: 50px;
+    margin-left:-100px;
+    //transform: translate(-15%, 0%);
 }
 #stnlogo{
     position: absolute;
@@ -67,7 +69,9 @@ img{
     margin-right: 3px;
     top:50%;
     left:50%;
-    transform: translate(-100%, 600%);
+    //top: 300px;
+    //left: 475px;
+    transform: translate(-150%, 675%);
     position: absolute;
 }
 .ScnMakeButton span {
@@ -149,7 +153,9 @@ img{
     border: none;
     top:50%;
     left:50%;
-    transform: translate(100%, 600%);
+    //top: 300px;
+    //left: 900px;
+    transform: translate(50%, 675%);
     margin-right: 3px;
     position: absolute;
 

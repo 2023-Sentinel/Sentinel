@@ -11,6 +11,7 @@ export const PCNode = new NodeBuilder('PCNode',{
     .addOutputInterface('OutputNode')
     .addOption('IPAddress', 'InputOption')
     .addOption('Date', 'InputOption')
+    .addInputInterface('MemoInput', "StringOption", "memo", {type:"MemoDot"})
 
 
     /*
