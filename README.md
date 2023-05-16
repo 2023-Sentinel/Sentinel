@@ -2,7 +2,7 @@
 Dashboard for Incident Response
 
 
-## 2023.05.01 진행상황 공유
+## 2023.05.15 진행상황 공유
 
 1. <strong>(완료)</strong> 프로젝트 생성 - 프론트엔드
 2. <strong>(완료)</strong> Header.vue / Home.vue / Login.vue 컴포넌트화
@@ -15,9 +15,13 @@ Dashboard for Incident Response
 8. <strong>(완료)</strong> 로그인 기능 구현
 9. <strong>(완료)</strong> 로그인 성공시 성공,실패시 Alert 알림, 성공시 Home화면 이동
 9. 로그인 성공시 Login 버튼 Logout으로 변경
-9. 시나리오 생성/삭제 화면
-10. 시나리오 선택화면
-11. <strong>대시보드 핵심 기능 구현</strong> 
+9. <strong>(완료)</strong> 시나리오 생성/삭제 화면
+10. <strong>(완료)</strong> 시나리오 선택화면
+11. <strong>대시보드 핵심 기능 구현</strong>
+  11_1. <strong>(완료)</strong> 시나리오 시각화
+  11_2. 시나리오 load
+  11_3. 타임라인
+  11_4. 통계표시
 
 ## 2023.05.01 Home화면
 <br>
