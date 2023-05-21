@@ -1,108 +1,136 @@
 <template>
-    <div class="board-list">
-        <div class="common-buttons">
-            <button type="button" class="w3-button w3-round w3-blue-gray" v-on:click="fnWrite">등록</button>
-        </div>
-        <div>
-          <SideBar></SideBar>
-        </div>
-        <table class="w3-table-all">
-            <thead>
-            <tr>
-                <th>시나리오 No</th>
-                <th>시나리오 제목</th>
-                <th>등록 일시</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="(row, idx) in list" :key="idx">
-                <td>{{ row.idx }}</td>
-                <td><a v-on:click="fnView(`${row.idx}`)">{{ row.title }}</a></td>
-                <td>{{ row.author }}</td>
-                <td>{{ row.created_at }}</td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="pagination w3-bar w3-padding-16 w3-small" v-if="paging.total_list_cnt > 0">
-      <span class="pg">
-      <a href="javascript:;" @click="fnPage(1)" class="first w3-button w3-bar-item w3-border">&lt;&lt;</a>
-      <a href="javascript:;" v-if="paging.start_page > 10" @click="fnPage(`${paging.start_page-1}`)"
-         class="prev w3-button w3-bar-item w3-border">&lt;</a>
-      <template v-for=" (n,index) in paginavigation()">
-          <template v-if="paging.page==n">
-              <strong class="w3-button w3-bar-item w3-border w3-green" :key="index">{{ n }}</strong>
-          </template>
-          <template v-else>
-              <a class="w3-button w3-bar-item w3-border" href="javascript:;" @click="fnPage(`${n}`)" :key="index">{{ n }}</a>
-          </template>
-      </template>
-      <a href="javascript:;" v-if="paging.total_page_cnt > paging.end_page"
-         @click="fnPage(`${paging.end_page+1}`)" class="next w3-button w3-bar-item w3-border">&gt;</a>
-      <a href="javascript:;" @click="fnPage(`${paging.total_page_cnt}`)" class="last w3-button w3-bar-item w3-border">&gt;&gt;</a>
-      </span>
+    <div class="listWrapper">
+        <div v-for="(el, index) in scnData" :key="index" class="list">
+            <!-- 페이지 이동 라우터 -->
+            <router-link :to="'/Dashboard/' + el.number">{{ el.title }}</router-link>
+            <p>{{ el.date }}</p>
         </div>
     </div>
+    <router-view :el="el"></router-view>
 </template>
 
-<script>
-import SideBar from "@/components/SideBar.vue"
 
-export default {
-  components: {SideBar},
-    data() { //변수생성
-        return {
-            requestBody: {}, //리스트 페이지 데이터전송
-            list: {}, //리스트 데이터
-            no: '', //게시판 숫자처리
-            paging: {
-                block: 0,
-                end_page: 0,
-                next_block: 0,
-                page: 0,
-                page_size: 0,
-                prev_block: 0,
-                start_index: 0,
-                start_page: 0,
-                total_block_cnt: 0,
-                total_list_cnt: 0,
-                total_page_cnt: 0,
-            }, //페이징 데이터
-            page: this.$route.query.page ? this.$route.query.page : 1,
-            size: this.$route.query.size ? this.$route.query.size : 10,
-            keyword: this.$route.query.keyword,
-            paginavigation: function () { //페이징 처리 for문 커스텀
-                let pageNumber = [] //;
-                let start_page = this.paging.start_page;
-                let end_page = this.paging.end_page;
-                for (let i = start_page; i <= end_page; i++) pageNumber.push(i);
-                return pageNumber;
-            }
-        }
-    },
-    mounted() {
-        this.fnGetList()
-    },
-    methods: {
-        fnGetList() {
-            this.requestBody = { // 데이터 전송
-                keyword: this.keyword,
-                page: this.page,
-                size: this.size
-            }
+<!--<template>-->
+<!--    <div class="board-list">-->
+<!--&lt;!&ndash;        <div class="common-buttons">&ndash;&gt;-->
+<!--&lt;!&ndash;            <button type="button" class="w3-button w3-round w3-blue-gray" v-on:click="fnWrite">등록</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <div>-->
+<!--          <SideBar></SideBar>-->
+<!--        </div>-->
+<!--        <div v-for="(el, index) in scnData()" :key="index" class="list">-->
+<!--            <router-link :to="'/Dashboard/' + el.number">{{el.title}}</router-link>-->
+<!--        </div>-->
+<!--&lt;!&ndash;        <table class="w3-table-all">&ndash;&gt;-->
+<!--&lt;!&ndash;            <thead>&ndash;&gt;-->
+<!--&lt;!&ndash;            <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th>시나리오 No</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th>시나리오 제목</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th>등록 일시</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            </thead>&ndash;&gt;-->
+<!--&lt;!&ndash;            <tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;            <tr v-for="(row, idx) in list" :key="idx">&ndash;&gt;-->
 
-            this.$axios.get(this.$serverUrl + "/board/list", {
-                params: this.requestBody,
-                headers: {}
-            }).then((res) => {
+<!--&lt;!&ndash;&lt;!&ndash;                시나리오 번호&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                <td>{{ row.idx }}</td>&ndash;&gt;-->
 
-                this.list = res.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
+<!--&lt;!&ndash;&lt;!&ndash;                해당 시나리오로 이동&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                <td><router-link :to="'/Dashboard/' + row.idx">{{row.title}}</router-link></td>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                <td><a v-on:click="fnView(`${row.idx}`)">{{ row.title }}</a></td>&ndash;&gt;&ndash;&gt;-->
 
-            // }).catch((err) => {
-            //     if (err.message.indexOf('Network Error') > -1) {
-            //         alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
-            //     }
-            })
-        }
-    }
-}
+<!--&lt;!&ndash;&lt;!&ndash;                등록일시&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                <td>{{ row.created_at }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                <td>{{ row.created_at }}</td>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;        </table>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="pagination w3-bar w3-padding-16 w3-small" v-if="paging.total_list_cnt > 0">&ndash;&gt;-->
+<!--&lt;!&ndash;      <span class="pg">&ndash;&gt;-->
+<!--&lt;!&ndash;      <a href="javascript:;" @click="fnPage(1)" class="first w3-button w3-bar-item w3-border">&lt;&lt;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      <a href="javascript:;" v-if="paging.start_page > 10" @click="fnPage(`${paging.start_page-1}`)"&ndash;&gt;-->
+<!--&lt;!&ndash;         class="prev w3-button w3-bar-item w3-border">&lt;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      <template v-for=" (n,index) in paginavigation()">&ndash;&gt;-->
+<!--&lt;!&ndash;          <template v-if="paging.page==n">&ndash;&gt;-->
+<!--&lt;!&ndash;              <strong class="w3-button w3-bar-item w3-border w3-green" :key="index">{{ n }}</strong>&ndash;&gt;-->
+<!--&lt;!&ndash;          </template>&ndash;&gt;-->
+<!--&lt;!&ndash;          <template v-else>&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="w3-button w3-bar-item w3-border" href="javascript:;" @click="fnPage(`${n}`)" :key="index">{{ n }}</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          </template>&ndash;&gt;-->
+<!--&lt;!&ndash;      </template>&ndash;&gt;-->
+<!--&lt;!&ndash;      <a href="javascript:;" v-if="paging.total_page_cnt > paging.end_page"&ndash;&gt;-->
+<!--&lt;!&ndash;         @click="fnPage(`${paging.end_page+1}`)" class="next w3-button w3-bar-item w3-border">&gt;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      <a href="javascript:;" @click="fnPage(`${paging.total_page_cnt}`)" class="last w3-button w3-bar-item w3-border">&gt;&gt;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </span>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--    </div>-->
+<!--</template>-->
+
+<!--<script>-->
+<!--import SideBar from "@/components/SideBar.vue"-->
+<!--import scnData from "@/components/scnData";-->
+
+<!--export default {-->
+<!--  components: {SideBar},-->
+<!--    data() { //변수생성-->
+<!--        return {-->
+<!--            requestBody: {}, //리스트 페이지 데이터전송-->
+<!--            list: {}, //리스트 데이터-->
+<!--            no: '', //게시판 숫자처리-->
+<!--            paging: {-->
+<!--                block: 0,-->
+<!--                end_page: 0,-->
+<!--                next_block: 0,-->
+<!--                page: 0,-->
+<!--                page_size: 0,-->
+<!--                prev_block: 0,-->
+<!--                start_index: 0,-->
+<!--                start_page: 0,-->
+<!--                total_block_cnt: 0,-->
+<!--                total_list_cnt: 0,-->
+<!--                total_page_cnt: 0,-->
+<!--            },-->
+<!--            //페이징 데이터-->
+<!--            page: this.route.query.page ? this.route.query.page : 1,-->
+<!--            size: this.route.query.size ? this.route.query.size : 10,-->
+<!--            keyword: this.route.query.keyword,-->
+<!--            paginavigation: function () { //페이징 처리 for문 커스텀-->
+<!--                let pageNumber = [] //;-->
+<!--                let start_page = this.paging.start_page;-->
+<!--                let end_page = this.paging.end_page;-->
+<!--                for (let i = start_page; i <= end_page; i++) pageNumber.push(i);-->
+<!--                return pageNumber;-->
+<!--            }-->
+<!--        }-->
+<!--    },-->
+<!--    mounted() {-->
+<!--        // this.fnGetList()-->
+<!--    },-->
+<!--    methods: {-->
+<!--        scnData() {-->
+<!--            return scnData-->
+<!--        },-->
+<!--        // fnGetList() {-->
+<!--        //     this.requestBody = { // 데이터 전송-->
+<!--        //         keyword: this.keyword,-->
+<!--        //         page: this.page,-->
+<!--        //         size: this.size-->
+<!--        //     }-->
+<!--        //-->
+<!--        //     this.$axios.get("/api/dashboards", {-->
+<!--        //         params: this.requestBody,-->
+<!--        //         headers: {}-->
+<!--        //     }).then((res) => {-->
+<!--        //         this.list = res.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.-->
+<!--        //     // }).catch((err) => {-->
+<!--        //     //     if (err.message.indexOf('Network Error') > -1) {-->
+<!--        //     //         alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')-->
+<!--        //     //     }-->
+<!--        //     })-->
+<!--        // },-->
+<!--    }-->
+<!--}-->
+<!--</script>-->
+<script setup>
+import scnData from "@/components/scnData";
 </script>

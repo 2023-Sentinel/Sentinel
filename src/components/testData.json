@@ -1,0 +1,159 @@
+{
+  "nodes": [
+    {
+      "type": "AtkNode",
+      "id": "node_16846819296030",
+      "name": "Attacker",
+      "options": [
+        [
+          "Attacker Name",
+          "abc"
+        ],
+        [
+          "Date",
+          null
+        ]
+      ],
+      "state": {},
+      "interfaces": [
+        [
+          "InputNode",
+          {
+            "id": "ni_16846819296031",
+            "value": null
+          }
+        ],
+        [
+          "OutputNode",
+          {
+            "id": "ni_16846819296032",
+            "value": null
+          }
+        ],
+        [
+          "MemoInput",
+          {
+            "id": "ni_16846819296033",
+            "value": "memo"
+          }
+        ]
+      ],
+      "position": {
+        "x": 48,
+        "y": 161
+      },
+      "width": 300,
+      "twoColumn": true,
+      "customClasses": ""
+    },
+    {
+      "type": "RouterNode",
+      "id": "node_16846819314594",
+      "name": "Router",
+      "options": [
+        [
+          "IPAddress",
+          "def"
+        ],
+        [
+          "Date",
+          null
+        ]
+      ],
+      "state": {},
+      "interfaces": [
+        [
+          "InputNode",
+          {
+            "id": "ni_16846819314595",
+            "value": null
+          }
+        ],
+        [
+          "OutputNode",
+          {
+            "id": "ni_16846819314596",
+            "value": null
+          }
+        ],
+        [
+          "MemoInput",
+          {
+            "id": "ni_16846819314597",
+            "value": "memo"
+          }
+        ]
+      ],
+      "position": {
+        "x": 416,
+        "y": 118
+      },
+      "width": 300,
+      "twoColumn": true,
+      "customClasses": ""
+    },
+    {
+      "type": "PCNode",
+      "id": "node_16846819331138",
+      "name": "PC",
+      "options": [
+        [
+          "IPAddress",
+          "ghi"
+        ],
+        [
+          "Date",
+          null
+        ]
+      ],
+      "state": {},
+      "interfaces": [
+        [
+          "InputNode",
+          {
+            "id": "ni_16846819331149",
+            "value": null
+          }
+        ],
+        [
+          "OutputNode",
+          {
+            "id": "ni_168468193311410",
+            "value": null
+          }
+        ],
+        [
+          "MemoInput",
+          {
+            "id": "ni_168468193311411",
+            "value": "memo"
+          }
+        ]
+      ],
+      "position": {
+        "x": 550,
+        "y": 408
+      },
+      "width": 300,
+      "twoColumn": true,
+      "customClasses": ""
+    }
+  ],
+  "connections": [
+    {
+      "id": "168468193498214",
+      "from": "ni_16846819296032",
+      "to": "ni_16846819314595"
+    },
+    {
+      "id": "168468193662217",
+      "from": "ni_16846819314596",
+      "to": "ni_16846819331149"
+    }
+  ],
+  "panning": {
+    "x": 0,
+    "y": 0
+  },
+  "scaling": 1
+}
