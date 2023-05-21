@@ -22,7 +22,7 @@ const routes = [
         component : ScnSelectPage
     },
     {
-      path : "/Dashboard",
+      path : "/Dashboard/:id",
         name : "Dashboard",
         component : DashboardPage
     },

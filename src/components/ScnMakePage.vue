@@ -64,6 +64,7 @@ export default {
 
         this.engine.calculate();
     },
+
     mounted(){
         this.editor.registerNodeType('AtkNode', AtkNode)
         this.editor.registerNodeType('RouterNode', RouterNode)
@@ -74,13 +75,14 @@ export default {
         this.editor.registerNodeType('AccountNode', AccountNode)
 
     },
+
     methods: {
         srnSave: function() {
             let saveData = {};
             saveData.title = this.srnName;
             saveData.srn = this.editor.save();
             console.log(this.editor.save());
-            alert(JSON.stringify(saveData));
+            // alert(JSON.stringify(saveData));
 
             this.$axios
                 .post("/api/dashboards", JSON.stringify(saveData))

@@ -18,9 +18,7 @@
       aria-labelledby="offcanvasRightLabel"
   >
     <div class="offcanvas-header">
-      <h3 class="offcanvas-title" id="offcanvasRightLabel">
-        Sentinel Board
-      </h3>
+
       <button
           type="button"
           class="btn-close"

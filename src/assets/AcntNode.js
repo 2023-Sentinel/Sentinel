@@ -15,4 +15,3 @@ export const AccountNode = new NodeBuilder('AccountNode',{
     .addInputInterface('MemoInput', "StringOption", "memo", {type:"MemoDot"})
     .build()
 
-
