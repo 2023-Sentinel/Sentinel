@@ -1,8 +1,13 @@
 <template>
     <SideBar></SideBar>
-    <div style="margin: 0 auto; height: 80vh; width: 80vw">
-        <baklava-editor :plugin="viewPlugin" />
+    <div class="dashboards">
+        <div style="margin: 0 auto; height: 80vh; width: 80vw">
+
+            <baklava-editor :plugin="viewPlugin" />
+        </div>
+
     </div>
+
     <router-view></router-view>
 </template>
 
@@ -29,6 +34,7 @@ import CustomSidebarOption from "@/assets/CustomSidebarOption"
 import TriggerOption from "@/assets/TriggerOption"
 import TextareaOption from "@/assets/TextareaOption"
 import SideBar from "@/components/SideBar.vue";
+import {CustomNode} from "@/assets/CTypeNode";
 // import {useRoute} from 'vue-router'
 // const route = useRoute()
 // let tdatas;
@@ -88,6 +94,7 @@ export default {
         this.editor.registerNodeType('SVNode', SVNode)
         this.editor.registerNodeType('FileNode', FLNode)
         this.editor.registerNodeType('AccountNode', AccountNode)
+        this.editor.registerNodeType('CustomNode', CustomNode)
         this.editor.registerNodeType('MemoNode', MemoNode)
     },
     mounted(){
@@ -98,5 +105,7 @@ export default {
 </script>
 
 <style scoped>
-
+.dashboards{
+    background-color: lightgray;
+}
 </style>

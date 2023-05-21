@@ -11,6 +11,7 @@ export const FLNode = new NodeBuilder('FileNode',{
     .addInputInterface('InputNode')
     .addOutputInterface('OutputNode')
     .addOption('FileName', 'InputOption')
+    .addOption('FileType', 'InputOption')
     .addOption('Date', 'InputOption')
     .addInputInterface('MemoInput', "StringOption", "memo", {type:"MemoDot"})
 

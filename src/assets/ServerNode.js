@@ -9,6 +9,7 @@ export const SVNode = new NodeBuilder('SVNode',{
     //노트 인풋 연결 Interface
     .addInputInterface('InputNode')
     .addOutputInterface('OutputNode')
+    .addOption('Name', 'InputOption')
     .addOption('IPAddress', 'InputOption')
     .addOption('Date', 'InputOption')
     .addInputInterface('MemoInput', "StringOption", "memo", {type:"MemoDot"})

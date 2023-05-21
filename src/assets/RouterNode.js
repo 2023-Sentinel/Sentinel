@@ -10,7 +10,7 @@ export const RouterNode = new NodeBuilder('RouterNode',{
     .addInputInterface('InputNode')
     .addOutputInterface('OutputNode')
 
-    .addOption('IPAddress', 'InputOption')
+    .addOption('Name', 'InputOption')
     .addOption('Date', 'InputOption')
     .addInputInterface('MemoInput', "StringOption", "memo", {type:"MemoDot"})
 

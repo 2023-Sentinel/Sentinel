@@ -10,7 +10,7 @@ export const AccountNode = new NodeBuilder('AccountNode',{
     //노트 인풋 연결 Interface
     .addInputInterface('InputNode')
     .addOutputInterface('OutputNode')
-    .addOption('Account Name', 'InputOption')
+    .addOption('Account Inform', 'InputOption')
     .addOption('Date', 'InputOption')
     .addInputInterface('MemoInput', "StringOption", "memo", {type:"MemoDot"})
     .build()

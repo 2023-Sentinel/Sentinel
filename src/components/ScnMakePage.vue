@@ -24,6 +24,7 @@ import {PCNode} from '@/assets/PCNode'
 import {SVNode} from '@/assets/ServerNode'
 import {FLNode} from '@/assets/FileNode'
 import {AccountNode} from '@/assets/AcntNode'
+import {CustomNode} from '@/assets/CTypeNode'
 // import {MemoNode} from '@/assets/MemoNode'
 import router from "@/scripts/router"
 
@@ -73,6 +74,7 @@ export default {
         this.editor.registerNodeType('SVNode', SVNode)
         this.editor.registerNodeType('FileNode', FLNode)
         this.editor.registerNodeType('AccountNode', AccountNode)
+        this.editor.registerNodeType('CustomNode', CustomNode)
 
     },
 
