@@ -1,7 +1,7 @@
 <template>
     <button class="custom-btn Aplbutton" type="button" @click="srnSave()"><span>Save</span>
     </button>
-    <input class="dark-input" type="text" value="scnNameText" placeholder="시나리오 제목"/>
+    <input class="dark-input" type="text" value="scnNameText" placeholder="시나리오 제목" @input="srnName=$event.target.value"/>
     <p>  </p>
     <p>  </p>
     <div style="margin: 0 auto; height: 80vh; width: 80vw">
@@ -33,25 +33,14 @@ import TriggerOption from "@/assets/TriggerOption"
 import TextareaOption from "@/assets/TextareaOption"
 
 export default {
-    methods: {
-        srnSave: function() {
-            const IState=this.editor.save()
-            console.log(IState)
-            router.push({
-                path:"/Dashboard"
-            })
-        },
-        srnLoad: function() {
-            let IState2=this.editor.save()
-            console.log(this.editor.load(IState2))
-        }
-    },
+
     data() {
         return {
             editor: new Editor(),
             viewPlugin: new ViewPlugin(),
             engine: new Engine(true),
-            nodeInterfaceTypes: new InterfaceTypePlugin()
+            nodeInterfaceTypes: new InterfaceTypePlugin(),
+            srnName:""
         }
     },
     created() {
@@ -84,7 +73,26 @@ export default {
         this.editor.registerNodeType('FileNode', FLNode)
         this.editor.registerNodeType('AccountNode', AccountNode)
 
-    }
+    },
+    methods: {
+        srnSave: function() {
+            let saveData = {};
+            saveData.title = this.srnName;
+            saveData.srn = this.editor.save();
+            console.log(this.editor.save());
+            alert(JSON.stringify(saveData));
+
+            this.$axios
+                .post("/api/dashboards", JSON.stringify(saveData))
+                .then(() => {
+                    console.log('success');
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            router.push("/ScnSelect");
+        },
+    },
 
 }
 </script>

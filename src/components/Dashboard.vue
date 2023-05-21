@@ -32,6 +32,18 @@ import SideBar from "@/components/SideBar.vue";
 export default {
     name: "Dashboard.vue",
     components: {SideBar},
+    setup(){
+        this.$axios
+            .get("/api/dashboards")
+            .then((data) => {
+                console.log(data);
+                //this.editor.load(data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+    },
     data() {
         return {
             editor: new Editor(),
