@@ -80,7 +80,7 @@ export default {
             saveData.title = this.srnName;
             saveData.srn = this.editor.save();
             console.log(this.editor.save());
-            alert(JSON.stringify(saveData));
+            // alert(JSON.stringify(saveData));
 
             this.$axios
                 .post("/api/dashboards", JSON.stringify(saveData))
