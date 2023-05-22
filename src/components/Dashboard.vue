@@ -1,6 +1,7 @@
 <template>
-    <SideBar></SideBar>
+
     <div style="margin: 0 auto; height: 80vh; width: 80vw">
+      <SideBar></SideBar>
         <baklava-editor :plugin="viewPlugin" />
     </div>
     <router-view></router-view>
