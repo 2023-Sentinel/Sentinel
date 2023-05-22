@@ -1,7 +1,8 @@
 <template>
-  <h2>
-    Sentinel Board
-  </h2>
+  <div class = "container">
+    <h2>
+      Sentinel Board
+    </h2>
   <br><br>
   <p>
     <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -120,7 +121,7 @@
       </li>
     </ul>
   </nav>
-
+  </div>
 </template>
 
 <script>
