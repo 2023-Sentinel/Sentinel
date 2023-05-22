@@ -1,5 +1,5 @@
 <template>
-
+    <Header/>
     <div style="margin: 0 auto; height: 80vh; width: 80vw">
       <button class="custom-btn Aplbutton" type="button" @click="srnSave()"><span>Save</span>
       </button>
@@ -18,6 +18,7 @@ import { ViewPlugin } from '@baklavajs/plugin-renderer-vue3'
 import { OptionPlugin } from '@baklavajs/plugin-options-vue3'
 import {InterfaceTypePlugin} from '@baklavajs/plugin-interface-types'
 
+import Header from "@/components/Header.vue";
 import {AtkNode} from '@/assets/AtkNode'
 import {RouterNode} from '@/assets/RouterNode'
 import {PPLNode} from '@/assets/PPLNode'
@@ -34,7 +35,9 @@ import TriggerOption from "@/assets/TriggerOption"
 import TextareaOption from "@/assets/TextareaOption"
 
 export default {
-
+  components: {
+     Header
+  },
     data() {
         return {
             editor: new Editor(),

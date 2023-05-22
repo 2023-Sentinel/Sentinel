@@ -1,4 +1,5 @@
 <template>
+    <Header/>
     <div class="listWrapper">
         <div v-for="(el, index) in scnData" :key="index" class="list">
             <!-- 페이지 이동 라우터 -->
@@ -133,4 +134,6 @@
 <!--</script>-->
 <script setup>
 import scnData from "@/components/scnData";
+import Header from "@/components/Header.vue";
+
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <Header/>
+
   <RouterView/>
     <Home.vue/>
     <ScnMakePage.vue/>
@@ -9,7 +9,7 @@
 
 <script>
 
-import Header from "@/components/Header.vue";
+// import Header from "@/components/Header.vue";
 // import Footer from "@/components/Footer.vue";
 import store from "@/scripts/store";
 import axios from "axios";
@@ -22,7 +22,7 @@ export default {
   name: 'App',
   components: {
     // Footer,
-    Header
+    // Header
   },
   setup(){
     const check = ()=>{

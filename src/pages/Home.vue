@@ -1,4 +1,5 @@
 <template>
+  <HomeHeader/>
   <div id="HomePage">
     <img id="stnlogo" src="@/assets/logo_icon.png" width="200" height="200"/>
     <button class="custom-btn ScnMakeButton" type="button" @click="$router.push('/ScnMake')"><span>시나리오 생성/삭제</span>
@@ -12,9 +13,17 @@
 <!--import axios from "axios";-->
 <!--import {reactive} from "vue";-->
 
+
+
 <script>
+import HomeHeader from "@/components/HomeHeader.vue";
+
 export default {
   name: "Home",
+  components: {
+    // Footer,
+    HomeHeader
+  },
 }
 </script>
 

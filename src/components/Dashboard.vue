@@ -1,5 +1,5 @@
 <template>
-
+    <Header/>
     <div style="margin: 0 auto; height: 80vh; width: 80vw">
       <SideBar></SideBar>
         <baklava-editor :plugin="viewPlugin" />
@@ -30,12 +30,13 @@ import CustomSidebarOption from "@/assets/CustomSidebarOption"
 import TriggerOption from "@/assets/TriggerOption"
 import TextareaOption from "@/assets/TextareaOption"
 import SideBar from "@/components/SideBar.vue";
+import Header from "@/components/Header.vue";
 // import {useRoute} from 'vue-router'
 // const route = useRoute()
 // let tdatas;
 export default {
     name: "Dashboard.vue",
-    components: {SideBar},
+    components: {Header, SideBar},
     props:{
       scnData: Array,
     },

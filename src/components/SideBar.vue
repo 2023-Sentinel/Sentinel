@@ -1,5 +1,4 @@
 <template>
-
   <body class="p-0 m-0 border-0 bd-example">
   <button
       class="btn btn-warning"
@@ -41,7 +40,7 @@ import BoardPage from "@/components/BoardPage.vue";
 export default {
   name: 'SideBar',
   components: {
-    BoardPage
+    BoardPage,
   },
 }
 </script>

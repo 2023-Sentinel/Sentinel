@@ -1,4 +1,5 @@
 <template>
+  <Header/>
   <div class = "container">
     <h2>
       Sentinel Board
@@ -127,7 +128,10 @@
 <script>
 
 
+import Header from "@/components/Header.vue";
+
 export default {
+  components: {Header}
 
 }
 
