@@ -33,7 +33,7 @@ import router from "@/scripts/router"
 import CustomSidebarOption from "@/assets/CustomSidebarOption"
 import TriggerOption from "@/assets/TriggerOption"
 import TextareaOption from "@/assets/TextareaOption"
-
+const baseUrl= "http://localhost:8080";
 export default {
 
     data() {
@@ -83,12 +83,12 @@ export default {
         srnSave: function() {
             let saveData = {};
             saveData.title = this.srnName;
-            saveData.srn = this.editor.save();
-            console.log(this.editor.save());
+            saveData.srn = JSON.stringify(this.editor.save());
+            console.log(saveData.srn);
             // alert(JSON.stringify(saveData));
 
             this.$axios
-                .post("/api/dashboards", JSON.stringify(saveData))
+                .post(baseUrl + "/" +"/api/dashboards", JSON.stringify(saveData))
                 .then(() => {
                     console.log('success');
                 })
