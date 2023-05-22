@@ -27,7 +27,7 @@ import {FLNode} from '@/assets/FileNode'
 import {AccountNode} from '@/assets/AcntNode'
 import {CustomNode} from '@/assets/CTypeNode'
 // import {MemoNode} from '@/assets/MemoNode'
-import router from "@/scripts/router"
+// import router from "@/scripts/router"
 
 //function import
 import CustomSidebarOption from "@/assets/CustomSidebarOption"
@@ -83,19 +83,19 @@ export default {
         srnSave: function() {
             let saveData = {};
             saveData.title = this.srnName;
-            saveData.srn = this.editor.save();
-            console.log(this.editor.save());
+            saveData.srn = JSON.stringify(this.editor.save());
+            console.log(saveData);
             // alert(JSON.stringify(saveData));
 
             this.$axios
-                .post("/api/dashboards", JSON.stringify(saveData))
+                .post( "api/createDashboard", JSON.stringify(saveData), {headers:{'Content-Type': 'application/json'},})
                 .then(() => {
                     console.log('success');
                 })
                 .catch((error) => {
                     console.log(error);
                 });
-            router.push("/ScnSelect");
+            // router.push("/ScnSelect");
         },
     },
 
