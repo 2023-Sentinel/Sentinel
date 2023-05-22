@@ -1,4 +1,5 @@
 <template>
+
   <body class="p-0 m-0 border-0 bd-example">
   <button
       class="btn btn-warning"
@@ -18,9 +19,7 @@
       aria-labelledby="offcanvasRightLabel"
   >
     <div class="offcanvas-header">
-      <h3 class="offcanvas-title" id="offcanvasRightLabel">
-        Sentinel Board
-      </h3>
+
       <button
           type="button"
           class="btn-close"
