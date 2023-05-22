@@ -3,6 +3,29 @@
     Sentinel Board
   </h2>
   <br><br>
+  <p>
+    <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      글쓰기
+    </a>
+<!--    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">-->
+<!--      채팅방-->
+<!--    </button>-->
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">제목</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+      <div>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <br>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">등록</button>
+        </div>
+    </div>
+  </div>
+
   <div class="accordion" id="accordionPanelsStayOpenExample">
     <div class="accordion-item">
       <h2 class="accordion-header">
@@ -79,6 +102,25 @@
       </div>
     </div>
   </div>
+<!--  Pagination (페이지 선택창)-->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
 </template>
 
 <script>

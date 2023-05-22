@@ -7,6 +7,7 @@ import ErrorPage from "@/pages/ErrorPage.vue"
 import BoardPage from "@/components/BoardPage.vue";
 
 import {createRouter, createWebHashHistory} from "vue-router";
+import BoardMakePage from "@/components/BoardMakePage.vue";
 
 const routes = [
     {path: '/', component: Home},
@@ -35,6 +36,11 @@ const routes = [
         path : "/Board",
         name : "Board",
         component: BoardPage
+    },
+    {
+        path : "/BoardMake",
+        name : "BoardMake",
+        component: BoardMakePage
     }
 
 
