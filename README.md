@@ -19,9 +19,10 @@ Dashboard for Incident Response
 10. <strong>(완료)</strong> 시나리오 선택화면
 11. <strong>대시보드 핵심 기능 구현</strong>
   <br>11_1. <strong>(완료)</strong> 시나리오 시각화
-  <br>11_2. 시나리오 load
-  <br>11_3. 타임라인 시각화
+  <br>11_2. <strong>(완료)</strong> 시나리오 save/load
+  <br>11_3. <strong>(캔슬)</strong> 타임라인 시각화
   <br>11_4. 통계표시
+  <br>11_5. 실시간 웹채팅
 
 ## 2023.05.01 Home화면
 <br>
