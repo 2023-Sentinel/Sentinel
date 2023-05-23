@@ -1,14 +1,20 @@
 <template>
-    <SideBar></SideBar>
-    <div class="dashboards">
-        <div style="margin: 0 auto; height: 80vh; width: 80vw">
 
+    <SideBar></SideBar>
+    <p class="ttests"><span class="dashboard_title">Scn Title: {{ttitle}}</span></p>
+<!--    <div v-for="(item, idx) in list2" :key="idx">-->
+<!--&lt;!&ndash;        <div>{{item.title}}</div>&ndash;&gt;-->
+<!--        <div>{ttitle}</div>-->
+
+<!--    </div>-->
+    <div class="dashboards">
+
+        <div style="margin: 0 auto; height: 80vh; width: 90vw">
             <baklava-editor :plugin="viewPlugin" />
         </div>
 
-    </div>
-    <div v-for="(item, idx) in list" :key="idx">{{item.title}}</div>
     <router-view></router-view>
+    </div>
 </template>
 
 <script>
@@ -63,6 +69,8 @@ export default {
             engine: new Engine(true),
             nodeInterfaceTypes: new InterfaceTypePlugin(),
             list:{},
+            /*list2:{},*/
+            ttitle:"",
             // tdatas: testData
             // tdatas: JSON.stringify(testData)
 
@@ -108,7 +116,9 @@ export default {
         }).then((res) => {
             this.list = res.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
             this.editor.load(JSON.parse(JSON.stringify(JSON.parse(this.list.srn))));
+            this.ttitle = res.data.title
             console.log("getSuccess");
+            return this.ttitle;
         }).catch((err) => {
             if (err.message.indexOf('Network Error') > -1) {
                 alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
@@ -116,12 +126,22 @@ export default {
         })
     },
 
+
 }
 
 </script>
 
 <style scoped>
 .dashboards{
-    background-color: lightgray;
+    background: linear-gradient(to top, black, lightsteelblue);
+}
+.dashboard_title{
+    text-align: center;
+    font-size: x-large;
+    overflow: hidden;
+    border-radius: 0 15px 15px 0;
+    border-left: inset;
+
+    background: #dcf1fb;
 }
 </style>

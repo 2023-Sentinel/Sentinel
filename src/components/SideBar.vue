@@ -29,6 +29,7 @@
     </div>
     <div class="offcanvas-body">
       <BoardPage></BoardPage>
+
     </div>
   </div>
   </body>
