@@ -18,20 +18,22 @@
         <div>
           <SideBar></SideBar>
         </div>
-        <table class="w3-table-all">
+        <div class="w3-container">
+        <table class="w3-table-all w3-border w3-centered" style="margin: 0 auto; width: 40vw">
             <thead>
-            <tr>
-                <th>No</th>
+            <tr class="w3-blue-grey" >
+                <th class="w3-border">No</th>
                 <th>시나리오 제목</th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="(item, idx) in list" :key="idx">
-                <td>{{ item.id }}</td>
+                <td class="w3-border">{{ item.id }}</td>
                 <td><a v-on:click="$router.push('/Dashboard/' + item.id)">{{ item.title }}</a></td>
             </tr>
             </tbody>
         </table>
+        </div>
 <!--        <div clas="list-view" v-for="(item, index) in list" :key="index">-->
 <!--            <span class="title-view">{{item.title}}</span>-->
 <!--        </div>-->
