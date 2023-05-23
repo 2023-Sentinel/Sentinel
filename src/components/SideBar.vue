@@ -26,9 +26,18 @@
           data-bs-dismiss="offcanvas"
           aria-label="Close"
       ></button>
+      <h2> Sentinel Board </h2> <br><br>
     </div>
     <div class="offcanvas-body">
-      <BoardPage></BoardPage>
+<!--      <BoardPage></BoardPage>-->
+<!--      <TestBoard></TestBoard>-->
+      <div style="position: relative; top:-250px; left:-1px;">
+        <iframe
+            src="http://localhost:3000/#/TestBoard"
+            height=1200px,
+            width="400px">
+        </iframe>
+      </div>
     </div>
   </div>
   </body>
@@ -37,12 +46,16 @@
 
 
 <script>
-import BoardPage from "@/components/BoardPage.vue";
+// import BoardPage from "@/components/BoardPage.vue";
+// import TestBoard from "@/components/TestBoard.vue";
+
+// import BoardPage from "@/components/BoardPage.vue";
 
 export default {
   name: 'SideBar',
   components: {
-    BoardPage
+    // BoardPage,
+    // TestBoard
   },
 }
 </script>

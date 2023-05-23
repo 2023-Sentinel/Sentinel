@@ -12,7 +12,7 @@
           <li class="nav-item"><a class="nav-link" @click="$router.push('/')">Home</a></li>
           <li class="nav-item"><a class="nav-link" @click="$router.push('/ScnMake')">ScnMakePage</a></li>
           <li class="nav-item"><a class="nav-link" @click="$router.push('/ScnSelect')">ScnSelectPage</a></li>
-          <li class="nav-item"><a class="nav-link" @click="$router.push('/Board')">Board</a></li>
+          <li class="nav-item"><a class="nav-link" @click="$router.push('/TestBoard')">Board</a></li>
           <li class="nav-item"><a href="#" class="nav-link">About</a></li>
         </ul>
       </div>
