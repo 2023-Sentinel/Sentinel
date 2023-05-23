@@ -33,6 +33,7 @@ import {CustomNode} from '@/assets/CTypeNode'
 import CustomSidebarOption from "@/assets/CustomSidebarOption"
 import TriggerOption from "@/assets/TriggerOption"
 import TextareaOption from "@/assets/TextareaOption"
+import router from "@/scripts/router";
 
 export default {
 
@@ -88,14 +89,16 @@ export default {
             // alert(JSON.stringify(saveData));
 
             this.$axios
-                .post( "api/createDashboard", JSON.stringify(saveData), {headers:{'Content-Type': 'application/json'},})
+                .post( "api/createDashboard", JSON.stringify(saveData), {
+                    headers:{'Content-Type': 'application/json; charset=UTF-8'},
+                })
                 .then(() => {
                     console.log('success');
                 })
                 .catch((error) => {
                     console.log(error);
                 });
-            // router.push("/ScnSelect");
+            router.push("/ScnSelect");
         },
     },
 

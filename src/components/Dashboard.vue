@@ -7,7 +7,7 @@
         </div>
 
     </div>
-
+    <div v-for="(item, idx) in list" :key="idx">{{item.title}}</div>
     <router-view></router-view>
 </template>
 
@@ -27,7 +27,7 @@ import {FLNode} from '@/assets/FileNode'
 import {AccountNode} from '@/assets/AcntNode'
 import {MemoNode} from '@/assets/MemoNode'
 // import router from "@/scripts/router"
-import testData from "@/components/testData.json"
+// import testData from "@/components/testData.json"
 
 //function import
 import CustomSidebarOption from "@/assets/CustomSidebarOption"
@@ -62,6 +62,7 @@ export default {
             viewPlugin: new ViewPlugin(),
             engine: new Engine(true),
             nodeInterfaceTypes: new InterfaceTypePlugin(),
+            list:{},
             // tdatas: testData
             // tdatas: JSON.stringify(testData)
 
@@ -79,12 +80,12 @@ export default {
 
         this.nodeInterfaceTypes.addType("MemoDot", "#BE3455");
 
-        const token = 1;
-        this.editor.events.beforeAddNode.addListener(token, (obj)=> {
-            console.log(obj);
-            return true;
-        })
-        console.log(JSON.stringify(testData))
+        // const token = 1;
+        // this.editor.events.beforeAddNode.addListener(token, (obj)=> {
+        //     console.log(obj);
+        //     return true;
+        // })
+        // console.log(JSON.stringify(testData))
 
         this.engine.calculate()
         this.editor.registerNodeType('AtkNode', AtkNode)
@@ -96,10 +97,25 @@ export default {
         this.editor.registerNodeType('AccountNode', AccountNode)
         this.editor.registerNodeType('CustomNode', CustomNode)
         this.editor.registerNodeType('MemoNode', MemoNode)
+
+
     },
     mounted(){
-        this.editor.load(JSON.parse(JSON.stringify(testData)))
-    }
+        // this.editor.load(JSON.parse(JSON.stringify(testData)))
+
+        this.$axios.get("/api/dashboards/" + this.$route.params.id, {
+            headers: {}
+        }).then((res) => {
+            this.list = res.data  //서버에서 데이터를 목록으로 보내므로 바로 할당하여 사용할 수 있다.
+            this.editor.load(JSON.parse(JSON.stringify(JSON.parse(this.list.srn))));
+            console.log("getSuccess");
+        }).catch((err) => {
+            if (err.message.indexOf('Network Error') > -1) {
+                alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+            }
+        })
+    },
+
 }
 
 </script>
