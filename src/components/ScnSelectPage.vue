@@ -19,17 +19,20 @@
           <SideBar></SideBar>
         </div>
         <div class="w3-container">
-        <table class="w3-table-all w3-border w3-centered" style="margin: 0 auto; width: 40vw">
+        <table class="w3-table-all w3-border w3-centered" style="margin: 0 auto; width: 60vw">
             <thead>
             <tr class="w3-blue-grey" >
                 <th class="w3-border">No</th>
                 <th>시나리오 제목</th>
+                <th class="w3-border">작성 시간</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(item, idx) in list" :key="idx">
+            <tr class="w3-hover-red" v-for="(item, idx) in list" :key="idx">
                 <td class="w3-border">{{ item.id }}</td>
-                <td><a v-on:click="$router.push('/Dashboard/' + item.id)">{{ item.title }}</a></td>
+
+                <td class="w3-border"><a v-on:click="$router.push('/Dashboard/' + item.id)">{{ item.title }}</a></td>
+                <td class="w3-border">{{ String(item.createdAt).split("T")[0] }}</td>
             </tr>
             </tbody>
         </table>

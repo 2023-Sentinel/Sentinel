@@ -1,6 +1,6 @@
 <template>
 
-    <div style="margin: 0 auto; height: 80vh; width: 80vw">
+    <div style="margin: 0 auto; height: 80vh; width: 90vw">
       <button class="custom-btn Aplbutton" type="button" @click="srnSave()"><span>Save</span>
       </button>
       <input class="dark-input" type="text" value="scnNameText" placeholder="시나리오 제목" @input="srnName=$event.target.value"/>
@@ -98,8 +98,11 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
-            router.push("/ScnSelect");
+            this.mvSelect();
         },
+        mvSelect: function(){
+            router.push("/ScnSelect");
+        }
     },
 
 }
