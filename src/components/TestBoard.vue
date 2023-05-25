@@ -1,110 +1,75 @@
 <template>
-    <h2>Pie Chart</h2>
-    <div style="max-width: 400px">
-        <vue3-chart-js v-bind="{ ...pieChart }" />
+    <div style="margin: 0 auto; height: 80vh; width: 80vw">
+        <br>
+        <button v-on:click="$router.replace('/TestBoard/write')"
+                type="button" class="btn btn-secondary">글쓰기
+        </button>
+        <br><br>
+
+        <table class="table table-secondary">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Title</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(item, idx) in list" :key="idx">
+                <td>{{ item.id }}</td>
+                <td><a v-on:click="$router.replace('/TestBoard/' + item.id)">{{ item.title }}</a></td>
+                <!--      <td><a v-on:click="$router.replace('/TestBoard/' + item.id)">{{ item.title }}</a></td>-->
+                <td>{{ String(item.date).split("T")[0] }}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
+
+
 </template>
 
 <script>
-import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
+
+import boardTest from "@/components/boardTest";
 
 export default {
-    components: {
-        Vue3ChartJs,
-    },
-    setup() {
-        const pieChart = {
-            type: "pie",
-            data: {
-                labels: ["VueJs", "EmberJs", "ReactJs", "AngularJs"],
-                datasets: [
-                    {
-                        backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16"],
-                        data: [40, 20, 80, 10],
-                    },
-                ],
-            },
-        };
-
+    data() {
         return {
-            pieChart,
-        };
+            list: {}, //리스트 데이터
+            list2: {},
+            no: '', //게시판 숫자처리
+        }
     },
-};
+    mounted() {
+        boardTest.getArticle(1)
+            .then((res) => {
+                console.log("getArticle", res);
+                this.list2 = res.data;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+
+        boardTest.getArticles(0)
+            .then((res) => {
+                console.log("getArticles", res);
+                this.list = res.data
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+
+        // boardTest.postArticle("title","content")
+        //     .then(function (response){
+        //       console.log("postArticle", response)
+        //     })
+        //     .catch(function(e){
+        //       console.log(e);
+        //     });
+    },
+    methods: {}
+}
 </script>
 
-<!--<template>-->
-<!--    <div style="margin: 0 auto; height: 80vh; width: 80vw">-->
-<!--        <br>-->
-<!--        <button v-on:click="$router.replace('/TestBoard/write')"-->
-<!--                type="button" class="btn btn-secondary">글쓰기-->
-<!--        </button>-->
-<!--        <br><br>-->
-
-<!--        <table class="table table-secondary">-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>No</th>-->
-<!--                <th>Title</th>-->
-<!--                <th>Date</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr v-for="(item, idx) in list" :key="idx">-->
-<!--                <td>{{ item.id }}</td>-->
-<!--                <td><a v-on:click="$router.replace('/TestBoard/' + item.id)">{{ item.title }}</a></td>-->
-<!--                &lt;!&ndash;      <td><a v-on:click="$router.replace('/TestBoard/' + item.id)">{{ item.title }}</a></td>&ndash;&gt;-->
-<!--                <td>{{ String(item.date).split("T")[0] }}</td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
-<!--    </div>-->
-
-
-<!--</template>-->
-
-<!--<script>-->
-
-<!--import boardTest from "@/components/boardTest";-->
-
-<!--export default {-->
-<!--    data() {-->
-<!--        return {-->
-<!--            list: {}, //리스트 데이터-->
-<!--            list2: {},-->
-<!--            no: '', //게시판 숫자처리-->
-<!--        }-->
-<!--    },-->
-<!--    mounted() {-->
-<!--        boardTest.getArticle(1)-->
-<!--            .then((res) => {-->
-<!--                console.log("getArticle", res);-->
-<!--                this.list2 = res.data;-->
-<!--            })-->
-<!--            .catch((e) => {-->
-<!--                console.log(e);-->
-<!--            });-->
-
-<!--        boardTest.getArticles(0)-->
-<!--            .then((res) => {-->
-<!--                console.log("getArticles", res);-->
-<!--                this.list = res.data-->
-<!--            })-->
-<!--            .catch((e) => {-->
-<!--                console.log(e);-->
-<!--            });-->
-
-<!--        // boardTest.postArticle("title","content")-->
-<!--        //     .then(function (response){-->
-<!--        //       console.log("postArticle", response)-->
-<!--        //     })-->
-<!--        //     .catch(function(e){-->
-<!--        //       console.log(e);-->
-<!--        //     });-->
-<!--    },-->
-<!--    methods: {}-->
-<!--}-->
-<!--</script>-->
-
-<!--<style scoped>-->
-<!--</style>-->
+<style scoped>
+</style>

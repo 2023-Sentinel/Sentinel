@@ -86,19 +86,19 @@
                 <div>
                     <!-- 통계 내용 들어갈 부분 -->
                     <!-- 1번 차트 -->
-                    <div class="alert alert-dismissible alert-warning">
+                    <div class="alert alert-dismissible alert-primary">
                         <div style="max-width: 400px; max-height: 250px">
                             <vue3-chart-js v-bind="{ ...pieChart }" style="margin: 0 auto"/>
                         </div>
                     </div>
                     <!-- 2번 차트 -->
-                    <div class="alert alert-dismissible alert-danger">
+                    <div class="alert alert-dismissible alert-primary">
                         <div style="max-width: 400px; max-height: 250px">
                             <vue3-chart-js v-bind="{ ...pieChart2}" style="margin: 0 auto"/>
                         </div>
                     </div>
                     <!-- 3번 차트 -->
-                    <div class="alert alert-dismissible alert-success">
+                    <div class="alert alert-dismissible alert-primary">
                         <div style="max-width: 400px; max-height: 250px">
                             <vue3-chart-js v-bind="{ ...pieChart3}" style="margin: 0 auto"/>
                         </div>
