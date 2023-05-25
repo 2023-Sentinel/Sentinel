@@ -1,13 +1,4 @@
 <template>
-
-<!--    <p>Scn Title: {{ttitle}}</p>-->
-<!--    <SideBar></SideBar>-->
-
-<!--    <div v-for="(item, idx) in list2" :key="idx">-->
-<!--&lt;!&ndash;        <div>{{item.title}}</div>&ndash;&gt;-->
-<!--        <div>{ttitle}</div>-->
-
-<!--    </div>-->
     <div style="margin: 0; height: 80vh; width: 79vw">
         <br>
         <!-- 보드 사이드바 영역 -->
@@ -91,9 +82,27 @@
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 <h2 class="offcanvas-title" style="margin: 0 auto" id="offcanvasStats">Scn Stats</h2>
             </div>
-            <div class="offcanvas-body">
+            <div class="offcanvas-body" style="margin: 0 auto">
                 <div>
                     <!-- 통계 내용 들어갈 부분 -->
+                    <!-- 1번 차트 -->
+                    <div class="alert alert-dismissible alert-warning">
+                        <div style="max-width: 400px; max-height: 250px">
+                            <vue3-chart-js v-bind="{ ...pieChart }" style="margin: 0 auto"/>
+                        </div>
+                    </div>
+                    <!-- 2번 차트 -->
+                    <div class="alert alert-dismissible alert-danger">
+                        <div style="max-width: 400px; max-height: 250px">
+                            <vue3-chart-js v-bind="{ ...pieChart2}" style="margin: 0 auto"/>
+                        </div>
+                    </div>
+                    <!-- 3번 차트 -->
+                    <div class="alert alert-dismissible alert-success">
+                        <div style="max-width: 400px; max-height: 250px">
+                            <vue3-chart-js v-bind="{ ...pieChart3}" style="margin: 0 auto"/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -101,7 +110,7 @@
 <!--        <button class="custom-btn Aplbutton" type="button"><span>Sidebar</span>-->
 <!--        </button>-->
 <!--        <SideBar></SideBar>-->
-        <div class="alert alert-dismissible alert-primary" style="height: 65px"><h1 style="text-align: center">Scn : {{ttitle}}</h1></div>
+        <div class="alert alert-dismissible alert-info" style="height: 65px"><h1 style="text-align: center">Scn Title: {{ttitle}}</h1></div>
         <baklava-editor :plugin="viewPlugin" />
     </div>
     <router-view></router-view>
@@ -132,10 +141,13 @@ import TextareaOption from "@/assets/TextareaOption"
 // import SideBar from "@/components/SideBar.vue";
 import {CustomNode} from "@/assets/CTypeNode";
 import boardTest from "@/components/boardTest";
+import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
 
 export default {
     name: "Dashboard.vue",
-
+    components: {
+        Vue3ChartJs,
+    },
     props:{
       scnData: Array,
     },
@@ -149,7 +161,86 @@ export default {
         //     .catch((error) => {
         //         console.log(error);
         //     });
+        const pieChart = {
+            type: "pie",
+            data: {
+                labels: ["VueJs", "EmberJs", "ReactJs", "AngularJs"],
+                datasets: [
+                    {
+                        backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16"],//파이 배경색 변경
+                        borderColor: '#FFFFFF',//테두리 색 변경
+                        data: [40, 20, 80, 10],
+                    },
+                ],
+            },
+            options:{
+                plugins:{
+                    legend:{
+                        display: true,
+                        labels:{
+                            color:'rgb(255, 255, 255)'//label 색상 변경
+                        }
+                    }
+                }
+            }
+        };
+        pieChart.options.plugins.title={text: 'First Chart', display: true, color: "#FFFFFF", font:{size:18}};
 
+        const pieChart2 = {
+            type: "pie",
+            data: {
+                labels: ["VueJs", "EmberJs", "ReactJs", "AngularJs"],
+                datasets: [
+                    {
+                        backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16"],//파이 배경색 변경
+                        borderColor: '#FFFFFF',//테두리 색 변경
+                        data: [40, 20, 80, 10],
+                    },
+                ],
+            },
+            options:{
+                plugins:{
+                    legend:{
+                        display: true,
+                        labels:{
+                            color:'rgb(255, 255, 255)'//label 색상 변경
+                        }
+                    }
+                }
+            }
+        };
+        pieChart2.options.plugins.title={text: 'Second Chart', display: true, color: "#FFFFFF", font:{size:18}};
+
+        const pieChart3 = {
+            type: "pie",
+            data: {
+                labels: ["VueJs", "EmberJs", "ReactJs", "AngularJs"],
+                datasets: [
+                    {
+                        backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16"],//파이 배경색 변경
+                        borderColor: '#FFFFFF',//테두리 색 변경
+                        data: [40, 20, 80, 10],
+                    },
+                ],
+            },
+            options:{
+                plugins:{
+                    legend:{
+                        display: true,
+                        labels:{
+                            color:'rgb(255, 255, 255)'//label 색상 변경
+                        }
+                    }
+                }
+            }
+        };
+        pieChart3.options.plugins.title={text: 'Third Chart', display: true, color: "#FFFFFF", font:{size:18}};
+
+        return {
+            pieChart,
+            pieChart2,
+            pieChart3,
+        };
     },
     data() {
         return {
@@ -167,7 +258,20 @@ export default {
             article: "",
             // tdatas: testData
             // tdatas: JSON.stringify(testData)
-
+            frut: [
+                {
+                    value: 30,
+                    label: "Apples"
+                },
+                {
+                    value: 20,
+                    label: "Oranges"
+                },
+                {
+                    value: 10,
+                    label: "Bananas"
+                }
+            ]
         }
     },
     created() {
@@ -236,6 +340,7 @@ export default {
             .catch((e) => {
                 console.log(e);
             });
+
 
     },
     methods: {
