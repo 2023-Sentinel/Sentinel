@@ -3,7 +3,13 @@
 @import "src/assets/_bootswatch";
 
 body{
-    background-size: cover;
-    background-repeat: no-repeat;
+    //background-size: cover;
+    //background-repeat: no-repeat;
+    height: 100vh;
+    //margin: 0 auto;
+    overflow: auto;
+}
 
+.btn{
+    width: 9.5vw;
 }

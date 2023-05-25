@@ -1,14 +1,12 @@
 <template>
-
     <div style="margin: 0 auto; height: 80vh; width: 90vw">
-      <button class="custom-btn Aplbutton" type="button" @click="srnSave()"><span>Save</span>
-      </button>
+        <br>
+      <button class="btn btn-info" type="button"  style="width:8vw" @click="srnSave()"><span>Save</span></button>
+        <br><br>
       <input class="dark-input" type="text" value="scnNameText" placeholder="시나리오 제목" @input="srnName=$event.target.value"/>
-      <p>  </p>
-      <p>  </p>
+      <br><br>
         <baklava-editor :plugin="viewPlugin" />
     </div>
-
 </template>
 
 <script>

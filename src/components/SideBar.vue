@@ -1,5 +1,4 @@
 <template>
-
   <body class="p-0 m-0 border-0 bd-example">
   <button
       class="btn btn-warning"
@@ -19,7 +18,6 @@
       aria-labelledby="offcanvasRightLabel"
   >
     <div class="offcanvas-header">
-
       <button
           type="button"
           class="btn-close"
@@ -29,7 +27,6 @@
     </div>
     <div class="offcanvas-body">
       <BoardPage></BoardPage>
-
     </div>
   </div>
   </body>

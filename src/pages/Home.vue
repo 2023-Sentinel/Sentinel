@@ -1,9 +1,9 @@
 <template>
   <div id="HomePage">
-    <img id="stnlogo" src="@/assets/logo_icon.png" width="200" height="200"/>
-    <button class="custom-btn ScnMakeButton" type="button" @click="$router.push('/ScnMake')"><span>시나리오 생성/삭제</span>
+    <img id="stnlogo" src="@/assets/logo_icon_removebg.png" width="200" height="200"/>
+    <button type="button" class="btn btn-outline-danger"  style="top: 50%; left: 50%;transform: translate(-150%, 1000%); position: absolute;" @click="$router.push('/ScnMake')"><span>시나리오 생성/삭제</span>
     </button>
-    <button class="custom-btn ScnSelectButton" type="button" @click="$router.push('/ScnSelect')"><span>시나리오 선택</span>
+    <button type="button" class="btn btn-outline-warning"  style="top: 50%; left: 50%;transform: translate(50%, 1000%); position: absolute;" @click="$router.push('/ScnSelect')"><span>시나리오 선택</span>
     </button>
   </div>
 
@@ -51,7 +51,7 @@ img{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(0%, 0%);
+    transform: translate(0%, 30%);
 }
 .custom-btn {
   width: 150px;

@@ -11,12 +11,11 @@
 
 
 <template>
-    <div class="ScnSelectPage">
+    <div class="container">
+        <br><br><br><br>
 <!--        <div class="common-buttons">-->
 <!--            <button type="button" class="w3-button w3-round w3-blue-gray" v-on:click="fnWrite">등록</button>-->
 <!--        </div>-->
-
-
 <!--        <div class="w3-container">-->
         <table class="table table-hover w3-border w3-centered" style="margin: 0 auto; width: 60vw">
             <thead>
