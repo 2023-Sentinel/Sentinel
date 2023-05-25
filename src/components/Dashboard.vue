@@ -55,8 +55,7 @@
 <!--        <button class="custom-btn Aplbutton" type="button"><span>Sidebar</span>-->
 <!--        </button>-->
 <!--        <SideBar></SideBar>-->
-        <h1 style="text-align: center">Scn : {{ttitle}}</h1>
-        <br>
+        <div class="alert alert-dismissible alert-primary" style="height: 65px"><h1 style="text-align: center">Scn : {{ttitle}}</h1></div>
         <baklava-editor :plugin="viewPlugin" />
     </div>
     <router-view></router-view>
