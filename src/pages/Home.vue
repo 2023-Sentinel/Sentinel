@@ -1,9 +1,9 @@
 <template>
   <div id="HomePage">
     <img id="stnlogo" src="@/assets/logo_icon_removebg.png" width="200" height="200"/>
-    <button type="button" class="btn btn-outline-danger"  style="top: 50%; left: 50%;transform: translate(-150%, 1000%); position: absolute;" @click="$router.push('/ScnMake')"><span>시나리오 생성/삭제</span>
+    <button type="button" class="btn btn-primary"  style="top: 50%; left: 50%;transform: translate(-150%, 1000%); position: absolute;" @click="$router.push('/ScnMake')"><span>시나리오 생성/삭제</span>
     </button>
-    <button type="button" class="btn btn-outline-warning"  style="top: 50%; left: 50%;transform: translate(50%, 1000%); position: absolute;" @click="$router.push('/ScnSelect')"><span>시나리오 선택</span>
+    <button type="button" class="btn btn-info"  style="top: 50%; left: 50%;transform: translate(50%, 1000%); position: absolute;" @click="$router.push('/ScnSelect')"><span>시나리오 선택</span>
     </button>
   </div>
 
