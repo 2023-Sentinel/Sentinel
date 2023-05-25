@@ -15,28 +15,27 @@
 <!--        <div class="common-buttons">-->
 <!--            <button type="button" class="w3-button w3-round w3-blue-gray" v-on:click="fnWrite">등록</button>-->
 <!--        </div>-->
-        <div>
-          <SideBar></SideBar>
-        </div>
-        <div class="w3-container">
-        <table class="w3-table-all w3-border w3-centered" style="margin: 0 auto; width: 60vw">
+
+
+<!--        <div class="w3-container">-->
+        <table class="table table-hover w3-border w3-centered" style="margin: 0 auto; width: 60vw">
             <thead>
-            <tr class="w3-blue-grey" >
-                <th class="w3-border">No</th>
-                <th>시나리오 제목</th>
-                <th class="w3-border">작성 시간</th>
+            <tr class="table-primary" >
+                <th scope="row">No</th>
+                <th scope="row">시나리오 제목</th>
+                <th scope="row">작성 시간</th>
             </tr>
             </thead>
             <tbody>
             <tr class="w3-hover-red" v-for="(item, idx) in list" :key="idx">
-                <td class="w3-border">{{ item.id }}</td>
+                <td class="table-dark w3-border">{{ item.id }}</td>
 
-                <td class="w3-border"><a v-on:click="$router.push('/Dashboard/' + item.id)">{{ item.title }}</a></td>
-                <td class="w3-border">{{ String(item.createdAt).split("T")[0] }}</td>
+                <td class="table-dark w3-border"><a v-on:click="$router.push('/Dashboard/' + item.id)">{{ item.title }}</a></td>
+                <td class="table-dark w3-border">{{ String(item.createdAt).split("T")[0] }}</td>
             </tr>
             </tbody>
         </table>
-        </div>
+<!--        </div>-->
 <!--        <div clas="list-view" v-for="(item, index) in list" :key="index">-->
 <!--            <span class="title-view">{{item.title}}</span>-->
 <!--        </div>-->
@@ -45,11 +44,11 @@
 </template>
 
 <script>
-import SideBar from "@/components/SideBar.vue"
+// import SideBar from "@/components/SideBar.vue"
 // import scnData from "@/components/scnData";
 
 export default {
-  components: {SideBar},
+  // components: {SideBar},
     data() { //변수생성
         return {
             requestBody: {}, //리스트 페이지 데이터전송

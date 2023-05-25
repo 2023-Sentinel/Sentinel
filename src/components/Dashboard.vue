@@ -133,7 +133,6 @@ export default {
 
 <style scoped>
 .dashboards{
-    background: linear-gradient(to top, black, lightsteelblue);
 }
 .dashboard_title{
     text-align: center;
@@ -142,6 +141,6 @@ export default {
     border-radius: 0 15px 15px 0;
     border-left: inset;
 
-    background: #dcf1fb;
+
 }
 </style>
