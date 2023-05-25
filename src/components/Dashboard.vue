@@ -8,8 +8,9 @@
 <!--        <div>{ttitle}</div>-->
 
 <!--    </div>-->
-    <div style="margin: 0 auto; height: 80vh; width: 90vw">
+    <div style="margin: 0; height: 80vh; width: 79vw">
         <br>
+        <!-- 보드 사이드바 영역 -->
         <button
             class="btn btn-warning"
             type="button"
@@ -17,7 +18,7 @@
             data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight"
         >
-            SideBar Board
+            Board Sidebar
         </button>
         <div
             class="offcanvas offcanvas-end"
@@ -28,30 +29,75 @@
             aria-labelledby="offcanvasRightLabel"
         >
             <div class="offcanvas-header">
-
                 <button
                     type="button"
                     class="btn-close"
                     data-bs-dismiss="offcanvas"
                     aria-label="Close"
                 ></button>
-
-                <h2 class = "board_title"> Sentinel Board </h2>
+                <h2 class = "offcanvas-title"> Sentinel Board </h2>
                 <br><br>
             </div>
+            <!-- v-show 조건: !붙이면 됨 -->
+            <!-- 글쓰기 기능까지 사이드바에 들어가야하면, v-if를 사용해야함 -->
+            <!-- v-show가 true면 목록 table, false면 해당 게시글 보여주기 -->
+            <div v-show="isTableNow" class="offcanvas-body">
+                <br>
+                <button v-on:click="$router.replace('/TestBoard/write')"
+                        type="button" class="btn btn-secondary">글쓰기
+                </button>
+                <br><br>
+
+                <table class="table table-secondary">
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(item, idx) in boardlist" :key="idx">
+                        <td>{{ item.id }}</td>
+                        <td><a v-on:click="getDetailView(item)">{{ item.title }}</a></td>
+                        <!--      <td><a v-on:click="$router.replace('/TestBoard/' + item.id)">{{ item.title }}</a></td>-->
+                        <td>{{ String(item.date).split("T")[0] }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 게시판 detail view -->
+            <div v-show="!isTableNow" class="offcanvas-body">
+                <div>
+                    <p>id : {{ article.id }}</p>
+                    <p>title : {{ article.title }}</p>
+                    <p>content : {{ article.content }}</p>
+                    <p>date : {{ String(article.date).split("T")[0] }}</p>
+                    <!--    뒤로가기 버튼-->
+                    <button v-on:click="isTableNow=!isTableNow"
+                            type="button" class="btn btn-secondary">Back
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <!-- 보드 사이드바 영역 종료 -->
+        <!-- 통계 사이드바 영역 -->
+        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasStats" role="button" aria-controls="offcanvasStats">
+            Stats Sidebar
+        </a>
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasStats" aria-labelledby="offcanvasStats">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <h2 class="offcanvas-title" style="margin: 0 auto" id="offcanvasStats">Scn Stats</h2>
+            </div>
             <div class="offcanvas-body">
-                <!--      <BoardPage></BoardPage>-->
-                <!--      <TestBoard></TestBoard>-->
-                <div style="position: relative; top:-250px; left:-1px;">
-                    <iframe
-                        src="http://localhost:3000/#/TestBoard"
-                        height=1200px,
-                        width="400px">
-                    </iframe>
+                <div>
+                    <!-- 통계 내용 들어갈 부분 -->
                 </div>
             </div>
         </div>
-
+        <!-- 통계 사이드바 영역 종료 -->
 <!--        <button class="custom-btn Aplbutton" type="button"><span>Sidebar</span>-->
 <!--        </button>-->
 <!--        <SideBar></SideBar>-->
@@ -85,14 +131,11 @@ import TriggerOption from "@/assets/TriggerOption"
 import TextareaOption from "@/assets/TextareaOption"
 // import SideBar from "@/components/SideBar.vue";
 import {CustomNode} from "@/assets/CTypeNode";
-// import BoardPage from "@/components/BoardPage.vue";
-// import {useRoute} from 'vue-router'
-// const route = useRoute()
-// let tdatas;
+import boardTest from "@/components/boardTest";
+
 export default {
     name: "Dashboard.vue",
-    // components: {BoardPage},
-    // components: {SideBar},
+
     props:{
       scnData: Array,
     },
@@ -115,8 +158,13 @@ export default {
             engine: new Engine(true),
             nodeInterfaceTypes: new InterfaceTypePlugin(),
             list:{},
+            boardlist:{},
+            boardlist2:{},
             /*list2:{},*/
             ttitle:"",
+            isTableNow: true,
+            detailId: 0,
+            article: "",
             // tdatas: testData
             // tdatas: JSON.stringify(testData)
 
@@ -169,8 +217,41 @@ export default {
             if (err.message.indexOf('Network Error') > -1) {
                 alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
             }
-        })
+        });
+
+        boardTest.getArticle(1)
+            .then((res) => {
+                console.log("getArticle", res);
+                this.boardlist2 = res.data;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+
+        boardTest.getArticles(0)
+            .then((res) => {
+                console.log("getArticles", res);
+                this.boardlist = res.data
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+
     },
+    methods: {
+        getDetailView: function(item){
+            this.isTableNow=!this.isTableNow;
+            this.detailId=item.id
+            boardTest.getArticle(this.detailId)
+                .then((res) => {
+                    this.article = res.data;
+                    console.log("article", res);
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        }
+    }
 
 
 }
@@ -186,7 +267,6 @@ export default {
     overflow: hidden;
     border-radius: 0 15px 15px 0;
     border-left: inset;
-
 
 }
 </style>
