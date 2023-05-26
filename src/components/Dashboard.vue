@@ -109,7 +109,7 @@
                 <button @click="writeArticle" type="button"
                         class="btn btn-outline-primary me-2">Save
                 </button>
-                <button v-on:click="isTableNow2=!isTableNow2"
+                <button @click="GoBoardWrite"
                         type="button" className="btn btn-primary me-2">Back
                 </button>
             </div>
@@ -299,7 +299,7 @@ export default {
             list: {},
             boardlist: {
                 data: {},
-                hidden: true
+                hidden: false
             },
             boardlist2: {},
             /*list2:{},*/
@@ -414,9 +414,10 @@ export default {
 
         },
         GoBoardWrite: function () {
+            this.isTableNow2 = this.boardlist.hidden;
             this.boardlist.hidden = !this.boardlist.hidden;
-            this.isTableNow2 = !this.boardlist.hidden;
-
+            console.log(this.isTableNow2);
+            console.log(this.boardlist.hidden);
         },
         writeArticle() {
             if (!this.title || !this.content) {
@@ -442,7 +443,7 @@ export default {
                         });
                     this.title = "";
                     this.content = "";
-
+                    this.isTableNow2 = this.boardlist.hidden;
                 })
                 .catch((e) => {
                     console.log(e);
@@ -451,7 +452,7 @@ export default {
 
             //list갱신
 
-            this.isTableNow2 = this.boardlist.hidden;
+
         },
 
 
