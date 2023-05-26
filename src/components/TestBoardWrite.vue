@@ -1,4 +1,5 @@
 <template>
+    <br><br><br>
     <div style="margin: 0 auto; height: 80vh; width: 80vw">
         <h3> 게시판 글쓰기 </h3>
         <br>
