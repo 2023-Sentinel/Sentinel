@@ -1,4 +1,5 @@
 <template>
+
     <div style="margin: 0 auto; height: 80vh; width: 80vw">
         <br>
         <button v-on:click="$router.replace('/TestBoard/write')"
