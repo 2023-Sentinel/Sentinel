@@ -3,7 +3,7 @@
         <br>
         <!-- 보드 사이드바 영역 -->
         <button
-            class="btn btn-warning"
+            className="btn btn-warning"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight"
@@ -12,39 +12,39 @@
             Board Sidebar
         </button>
         <div
-            class="offcanvas offcanvas-end"
+            className="offcanvas offcanvas-end"
             data-bs-scroll="true"
             data-bs-backdrop="false"
-            tabindex="-1"
+            tabIndex="-1"
             id="offcanvasRight"
             aria-labelledby="offcanvasRightLabel"
         >
-            <div class="offcanvas-header">
+            <div className="offcanvas-header">
                 <button
                     type="button"
-                    class="btn-close"
+                    className="btn-close"
                     data-bs-dismiss="offcanvas"
                     aria-label="Close"
                 ></button>
-                <h2 class="offcanvas-title"> Sentinel Board </h2>
+                <h2 className="offcanvas-title"> Sentinel Board </h2>
                 <br><br>
             </div>
             <!-- v-show 조건: !붙이면 됨 -->
             <!-- 글쓰기 기능까지 사이드바에 들어가야하면, v-if를 사용해야함 -->
             <!-- v-show가 true면 목록 table, false면 해당 게시글 보여주기 -->
             <div v-show="isTableNow2">
-                <div v-show="isTableNow" class="offcanvas-body">
+                <div v-show="isTableNow" className="offcanvas-body">
 
                     <br>
                     <button v-on:click="GoBoardWrite()"
-                            type="button" class="btn btn-secondary">글쓰기
+                            type="button" className="btn btn-secondary">글쓰기
                     </button>
                     <!--          <button v-on:click="$router.replace('/TestBoard/write')"-->
                     <!--                  type="button" class="btn btn-secondary">글쓰기-->
                     <!--          </button>-->
                     <br><br>
 
-                    <table class="table table-secondary">
+                    <table className="table table-secondary">
                         <thead>
                         <tr>
                             <th>No</th>
@@ -64,39 +64,45 @@
                 </div>
             </div>
             <!-- 게시판 detail view -->
-            <div v-show="!isTableNow" class="offcanvas-body">
+            <div v-show="!isTableNow" className="offcanvas-body">
                 <div>
                     <br><br><br>
-                    <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
-                        <div class="card-header">#{{ article.id }}&emsp;|&emsp;{{ String(article.date).split("T")[0] }}</div>
-                        <div class="card-body">
-                            <h4 class="card-title">{{ article.title }}</h4>
-                            <p class="card-text">{{ article.content }}</p>
+                    <div className="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+                        <div className="card-header">#{{ article.id }}&emsp;|&emsp;{{
+                                String(article.date).split("T")[0]
+                            }}
+                        </div>
+                        <div className="card-body">
+                            <h4 className="card-title">{{ article.title }}</h4>
+                            <p className="card-text">{{ article.content }}</p>
                         </div>
                     </div>
 
                     <button v-on:click="isTableNow=!isTableNow"
-                            type="button" class="btn btn-secondary">Back
+                            type="button" className="btn btn-secondary">Back
                     </button>
                 </div>
             </div>
             <!-- 게시판 Write -->
-            <div v-show="!isTableNow2" class="offcanvas-body">
+            <div v-show="!isTableNow2" className="offcanvas-body">
                 <h3> 게시판 글쓰기 </h3>
                 <br>
-                <div class="board-waring-text"> ※ 음란물, 차별, 비하, 혐오 및 초상권, 저작권 침해 게시물은 민, 형사상의 책임을 질 수 있습니다. [저작권법 안내] [게시물 활용
+                <div className="board-waring-text"> ※ 음란물, 차별, 비하, 혐오 및 초상권, 저작권 침해 게시물은 민, 형사상의 책임을 질 수 있습니다. [저작권법 안내]
+                    [게시물 활용
                     안내]
                 </div>
                 <br>
-                <div class="form-floating">
-                    <input v-model="title" class="form-control" placeholder="Leave a comment here" id="floatingTextarea">
-                    <label for="floatingTextarea">제목</label>
+                <div className="form-floating">
+                    <input v-model="title" className="form-control" placeholder="Leave a comment here"
+                           id="floatingTextarea">
+                    <label htmlFor="floatingTextarea">제목</label>
                 </div>
                 <br>
-                <div class="form-floating">
-                    <input v-model="content" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                <div className="form-floating">
+                    <input v-model="content" className="form-control" placeholder="Leave a comment here"
+                           id="floatingTextarea2"
                            style="height: 100px">
-                    <label for="floatingTextarea2">내용</label>
+                    <label htmlFor="floatingTextarea2">내용</label>
                 </div>
                 <br>
 
@@ -104,39 +110,40 @@
                         class="btn btn-outline-primary me-2">Save
                 </button>
                 <button v-on:click="isTableNow2=!isTableNow2"
-                        type="button" class="btn btn-primary me-2">Back
+                        type="button" className="btn btn-primary me-2">Back
                 </button>
             </div>
         </div>
         <!-- 보드 사이드바 영역 종료 -->
         <!-- 통계 사이드바 영역 -->
-        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasStats" role="button"
+        <a className="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasStats" role="button"
            aria-controls="offcanvasStats">
             Stats Sidebar
         </a>
-        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+        <div className="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabIndex="-1"
              id="offcanvasStats" aria-labelledby="offcanvasStats">
-            <div class="offcanvas-header">
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                <h2 class="offcanvas-title" style="margin: 0 auto" id="offcanvasStats">Scn Stats</h2>
+            <div className="offcanvas-header">
+                <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                <h2 className="offcanvas-title" style="margin: 0 auto" id="offcanvasStats">Scn Stats</h2>
             </div>
-            <div class="offcanvas-body" style="margin: 0 auto">
+            <div className="offcanvas-body" style="margin: 0 auto">
                 <div>
                     <!-- 통계 내용 들어갈 부분 -->
                     <!-- 1번 차트 -->
-                    <div class="alert alert-dismissible alert-primary">
+                    <div className="alert alert-dismissible alert-primary">
                         <div style="max-width: 400px; max-height: 250px">
                             <vue3-chart-js v-bind="{ ...pieChart }" style="margin: 0 auto"/>
                         </div>
                     </div>
                     <!-- 2번 차트 -->
-                    <div class="alert alert-dismissible alert-primary">
+                    <div className="alert alert-dismissible alert-primary">
                         <div style="max-width: 400px; max-height: 250px">
                             <vue3-chart-js v-bind="{ ...pieChart2}" style="margin: 0 auto"/>
                         </div>
                     </div>
                     <!-- 3번 차트 -->
-                    <div class="alert alert-dismissible alert-primary">
+                    <div className="alert alert-dismissible alert-primary">
                         <div style="max-width: 400px; max-height: 250px">
                             <vue3-chart-js v-bind="{ ...pieChart3}" style="margin: 0 auto"/>
                         </div>
@@ -148,7 +155,8 @@
         <!--        <button class="custom-btn Aplbutton" type="button"><span>Sidebar</span>-->
         <!--        </button>-->
         <!--        <SideBar></SideBar>-->
-        <div class="alert alert-dismissible alert-info" style="height: 65px"><h1 style="text-align: center">Scn Title:
+        <div className="alert alert-dismissible alert-info" style="height: 65px"><h1 style="text-align: center">Scn
+            Title:
             {{ ttitle }}</h1></div>
         <baklava-editor :plugin="viewPlugin"/>
     </div>
@@ -290,8 +298,8 @@ export default {
             nodeInterfaceTypes: new InterfaceTypePlugin(),
             list: {},
             boardlist: {
-                data:{},
-                hidden:true
+                data: {},
+                hidden: true
             },
             boardlist2: {},
             /*list2:{},*/
@@ -406,7 +414,7 @@ export default {
 
         },
         GoBoardWrite: function () {
-            this.boardlist.hidden = true;
+            this.boardlist.hidden = !this.boardlist.hidden;
             this.isTableNow2 = !this.boardlist.hidden;
 
         },
@@ -423,7 +431,15 @@ export default {
                     // let list2 = [this.list];
                     // list2.push(this.content,this.date,this.title);
                     // this.list = list2;
-
+                    boardTest.getArticles(0)
+                        .then((res) => {
+                            console.log("getArticles", res);
+                            this.boardlist.data = res.data
+                            this.boardlist.hidden =!this.boardlist.hidden;
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                        });
 
                 })
                 .catch((e) => {
@@ -432,16 +448,8 @@ export default {
                 });
 
             //list갱신
-            boardTest.getArticles(0)
-                .then((res) => {
-                    console.log("getArticles", res);
-                    this.boardlist.data = res.data
-                    this.boardlist.hidden = false
-                })
-                .catch((e) => {
-                    console.log(e);
-                });
-            this.isTableNow2 = !this.boardlist.hidden;
+
+            this.isTableNow2 = this.boardlist.hidden;
         },
 
 
