@@ -44,7 +44,7 @@
                     <!--          </button>-->
                     <br><br>
 
-                    <table className="table table-secondary">
+                    <table className="table table-hover table-secondary">
                         <thead>
                         <tr>
                             <th>No</th>
@@ -53,7 +53,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="item in boardlist.data" :key="item">
+                        <tr class="table-secondary" v-for="item in boardlist.data" :key="item">
                             <td>{{ item.id }}</td>
                             <td><a v-on:click="getDetailView(item)">{{ item.title }}</a></td>
                             <!--      <td><a v-on:click="$router.replace('/TestBoard/' + item.id)">{{ item.title }}</a></td>-->
@@ -105,12 +105,11 @@
                     <label htmlFor="floatingTextarea2">내용</label>
                 </div>
                 <br>
-
                 <button @click="writeArticle" type="button"
-                        class="btn btn-outline-primary me-2">Save
+                        class="btn btn-outline-success">Save
                 </button>
                 <button @click="GoBoardWrite"
-                        type="button" className="btn btn-primary me-2">Back
+                        type="button" className="btn btn-outline-secondary">Back
                 </button>
             </div>
         </div>
