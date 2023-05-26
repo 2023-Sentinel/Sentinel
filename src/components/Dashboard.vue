@@ -440,6 +440,8 @@ export default {
                         .catch((e) => {
                             console.log(e);
                         });
+                    this.title = "";
+                    this.content = "";
 
                 })
                 .catch((e) => {
