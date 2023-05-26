@@ -33,15 +33,22 @@
       <!-- 글쓰기 기능까지 사이드바에 들어가야하면, v-if를 사용해야함 -->
       <!-- v-show가 true면 목록 table, false면 해당 게시글 보여주기 -->
       <div v-show="isTableNow2">
-      <div v-show="isTableNow" class="offcanvas-body">
+        <div v-show="isTableNow" class="offcanvas-body">
 
           <br>
+          <div>
           <button v-on:click="GoBoardWrite()"
                   type="button" class="btn btn-secondary">글쓰기
           </button>
-<!--          <button v-on:click="$router.replace('/TestBoard/write')"-->
-<!--                  type="button" class="btn btn-secondary">글쓰기-->
-<!--          </button>-->
+          <br><br>
+          <div v-if="issave" class="alert alert-dismissible alert-info">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>게시글 작성완료!</strong> 새로고침하여 게시글을 확인할 수 있습니다.  또는 <a href="http://localhost:3000/#/TestBoard">링크</a>에서 게시글을 확인하세요.
+          </div>
+          </div>
+          <!--          <button v-on:click="$router.replace('/TestBoard/write')"-->
+          <!--                  type="button" class="btn btn-secondary">글쓰기-->
+          <!--          </button>-->
           <br><br>
 
           <table class="table table-secondary">
@@ -103,9 +110,11 @@
         <button @click="writeArticle" v-on:click="isTableNow2=!isTableNow2" type="button"
                 class="btn btn-outline-primary me-2">Save
         </button>
+
         <button v-on:click="isTableNow2=!isTableNow2"
                 type="button" class="btn btn-primary me-2">Back
         </button>
+
       </div>
     </div>
     <!-- 보드 사이드바 영역 종료 -->
@@ -299,6 +308,7 @@ export default {
       article: "",
       title: "",
       content: "",
+      issave: false,
       cKey: 0,
       // tdatas: testData
       // tdatas: JSON.stringify(testData)
@@ -413,10 +423,11 @@ export default {
           .then((res) => {
             console.log("postArticle", res);
             // this.$router.push({path: "/TestBoard"}); // 루트로 이동
-            let list2 = [this.list];
-            list2.push(this.content,this.date,this.title);
-            this.list = list2;
-
+            // let list2 = [this.list];
+            // list2.push(this.content, this.date, this.title);
+            // this.list = list2;
+            this.$forceUpdate();
+            this.issave = true;
           })
           .catch((e) => {
             console.log(e);
