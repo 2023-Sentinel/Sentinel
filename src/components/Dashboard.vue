@@ -106,10 +106,10 @@
                 </div>
                 <br>
                 <button @click="writeArticle" type="button"
-                        class="btn btn-outline-success">Save
+                        class="btn btn-outline-success" style="width:160px">Save
                 </button>
                 <button @click="GoBoardWrite"
-                        type="button" className="btn btn-outline-secondary">Back
+                        type="button" className="btn btn-outline-secondary" style="width:160px">Back
                 </button>
             </div>
         </div>
