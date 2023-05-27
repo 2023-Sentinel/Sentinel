@@ -151,6 +151,53 @@
             </div>
         </div>
         <!-- 통계 사이드바 영역 종료 -->
+        <!-- 채팅 사이드바 -->
+        <a className="btn btn-info" data-bs-toggle="offcanvas" href="#offcanvasChats" role="button"
+           aria-controls="offcanvasChats">
+            Chat Sidebar
+        </a>
+        <div className="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabIndex="-1"
+             id="offcanvasChats" aria-labelledby="offcanvasChats">
+            <div className="offcanvas-header">
+                <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                <h2 className="offcanvas-title" style="margin: 0 auto" id="offcanvasChats">Scn Chats</h2>
+            </div>
+            <div className="offcanvas-body" style="overflow:scroll">
+                <div>
+                    유저이름:
+                    <input
+                        v-model="userName"
+                        type="text"
+                        class="form-control"
+                        style="width:8vw"
+                        placeholder="username"
+                    >
+                    <!-- 채팅 내용 들어갈 부분 -->
+                    <div className="card border-info" style="border:1px solid; margin-top: 15px; height: 75vh; overflow:scroll">
+                        <div
+                            v-for="(item, idx) in recvList"
+                            :key="idx"
+                        >
+                            <h6>유저: {{ item.userName }}</h6>
+                            <div className="alert alert-dismissible alert-light" style="margin-left:5px; width:320px; height: 6vh; overflow:scroll">
+                                <span class="text-primary">{{ item.content }}</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="offcanvas-footer" style="margin-bottom: 30px">
+                메시지: <input
+                v-model="message"
+                type="text"
+                class="form-control"
+                placeholder="message"
+                @keyup="sendMessage"
+            >
+            </div>
+        </div>
         <!--        <button class="custom-btn Aplbutton" type="button"><span>Sidebar</span>-->
         <!--        </button>-->
         <!--        <SideBar></SideBar>-->
@@ -189,6 +236,9 @@ import {CustomNode} from "@/assets/CTypeNode";
 import boardTest from "@/components/boardTest";
 // import TestBoardWrite from "@/components/TestBoardWrite.vue";
 import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
+//chat function
+import Stomp from 'webstomp-client'
+import SockJS from 'sockjs-client'
 
 export default {
     name: "Dashboard.vue",
@@ -310,22 +360,11 @@ export default {
             title: "",
             content: "",
             cKey: 0,
+            userName: "",
+            message: "",
+            recvList: [],
             // tdatas: testData
             // tdatas: JSON.stringify(testData)
-            frut: [
-                {
-                    value: 30,
-                    label: "Apples"
-                },
-                {
-                    value: 20,
-                    label: "Oranges"
-                },
-                {
-                    value: 10,
-                    label: "Bananas"
-                }
-            ]
         }
     },
     created() {
@@ -339,7 +378,7 @@ export default {
         this.viewPlugin.registerOption("TriggerOption", TriggerOption)
 
         this.nodeInterfaceTypes.addType("MemoDot", "#BE3455");
-
+        this.connect()
         // const token = 1;
         // this.editor.events.beforeAddNode.addListener(token, (obj)=> {
         //     console.log(obj);
@@ -454,6 +493,49 @@ export default {
 
         },
 
+        sendMessage (e) {
+            if(e.keyCode === 13 && this.userName !== '' && this.message !== ''){
+                this.send()
+                this.message = ''
+            }
+        },
+        send() {
+            console.log("Send message:" + this.message);
+            if (this.stompClient && this.stompClient.connected) {
+                const msg = {
+                    userName: this.userName,
+                    content: this.message
+                };
+                this.stompClient.send("/receive", JSON.stringify(msg), {});
+            }
+        },
+        connect() {
+            const serverURL = "http://localhost:8080"
+            let socket = new SockJS(serverURL);
+            this.stompClient = Stomp.over(socket);
+            console.log(`소켓 연결을 시도합니다. 서버 주소: ${serverURL}`)
+            this.stompClient.connect(
+                {},
+                frame => {
+                    // 소켓 연결 성공
+                    this.connected = true;
+                    console.log('소켓 연결 성공', frame);
+                    // 서버의 메시지 전송 endpoint를 구독합니다.
+                    // 이런형태를 pub sub 구조라고 합니다.
+                    this.stompClient.subscribe("/send", res => {
+                        console.log('구독으로 받은 메시지 입니다.', res.body);
+
+                        // 받은 데이터를 json으로 파싱하고 리스트에 넣어줍니다.
+                        this.recvList.push(JSON.parse(res.body))
+                    });
+                },
+                error => {
+                    // 소켓 연결 실패
+                    console.log('소켓 연결 실패', error);
+                    this.connected = false;
+                }
+            );
+        },
 
     }
 

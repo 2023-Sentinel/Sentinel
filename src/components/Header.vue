@@ -21,6 +21,9 @@
                     <li class="nav-item">
                         <a class="nav-link" style="font-size: 1em; margin-right: 0.5em" @click="$router.push('/TestBoard')">게시판</a>
                     </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" style="font-size: 1em; margin-right: 0.5em" @click="$router.push('/CustomChat')">chat</a>-->
+<!--                    </li>-->
                 </ul>
             </div>
         </div>

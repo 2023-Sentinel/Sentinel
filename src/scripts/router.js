@@ -11,6 +11,7 @@ import {createRouter, createWebHashHistory} from "vue-router";
 import BoardMakePage from "@/components/BoardMakePage.vue";
 import TestBoardDetail from "@/components/TestBoardDetail.vue";
 import TestBoardWrite from "@/components/TestBoardWrite.vue";
+import CustomChat from "@/components/customChatSide.vue";
 
 const routes = [
     {path: '/', component: Home},
@@ -60,6 +61,12 @@ const routes = [
         name : "TestBoardWrite",
         component: TestBoardWrite
     },
+    {
+        path : "/CustomChat",
+        name : "CustomChat",
+        component: CustomChat
+
+    }
 
 
 
