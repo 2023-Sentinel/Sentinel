@@ -161,7 +161,7 @@
             <div className="offcanvas-header">
                 <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
-                <h2 className="offcanvas-title" style="margin: 0 auto" id="offcanvasChats">Scn Chats</h2>
+                <h2 className="offcanvas-title" style="margin: 0 auto" id="offcanvasChats">STN Chats</h2>
             </div>
             <div className="offcanvas-body" style="overflow:scroll">
                 <div>
