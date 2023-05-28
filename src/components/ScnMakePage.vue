@@ -92,11 +92,12 @@ export default {
                 })
                 .then(() => {
                     console.log('success');
+                    this.mvSelect();
                 })
                 .catch((error) => {
                     console.log(error);
                 });
-            this.mvSelect();
+
         },
         mvSelect: function(){
             router.push("/ScnSelect");

@@ -74,7 +74,7 @@
                         </div>
                         <div className="card-body">
                             <h4 className="card-title">{{ article.title }}</h4>
-                            <p className="card-text">{{ article.content }}</p>
+                            <p className="card-text" style="white-space: pre-line">{{ article.content }}</p>
                         </div>
                     </div>
 
@@ -99,9 +99,9 @@
                 </div>
                 <br>
                 <div className="form-floating">
-                    <input v-model="content" className="form-control" placeholder="Leave a comment here"
+                    <textarea v-model="content" className="form-control" placeholder="Leave a comment here"
                            id="floatingTextarea2"
-                           style="height: 100px">
+                           style="height: 100px"/>
                     <label htmlFor="floatingTextarea2">내용</label>
                 </div>
                 <br>
